@@ -4,7 +4,7 @@ public class playerfood : MonoBehaviour
 {
     public GameObject food;
     public GameObject holdpoint;
-    private bool hasfood = false;
+    public bool hasfood = false;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
