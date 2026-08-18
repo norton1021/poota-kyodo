@@ -12,25 +12,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 左矢印が押されたとき
+        // Aキーで左に移動
         if (Keyboard.current.aKey.isPressed)
         {
             transform.Translate(-0.1f, 0, 0);
         }
 
-        // 右矢印が押されたとき
+        // Dキーで右に移動
         if (Keyboard.current.dKey.isPressed)
         {
             transform.Translate(0.1f, 0, 0);
         }
 
-        // 上矢印が押されたとき
+        // Wキーで上に移動
         if (Keyboard.current.wKey.isPressed)
         {
             transform.Translate(0, 0.1f, 0);
         }
 
-        // 下矢印が押されたとき
+        // Sキーで下に移動
         if (Keyboard.current.sKey.isPressed)
         {
             transform.Translate(0, -0.1f, 0);
