@@ -6,6 +6,8 @@ TagManager:
   tags:
   - cat
   - food
+  - Enemy
+  - enemy
   layers:
   - Default
   - TransparentFX

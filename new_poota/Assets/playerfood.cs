@@ -13,7 +13,7 @@ public class playerfood : MonoBehaviour
             {
                 float foodDistance = Vector2.Distance(
                     transform.position, food.transform.position);
-                if (foodDistance < 1.5f) ;
+                if (foodDistance < 1.5f) 
                 {
                     PickUpFood();
                     return;
