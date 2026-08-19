@@ -356,12 +356,12 @@ GameObject:
   m_Component:
   - component: {fileID: 257447914}
   - component: {fileID: 257447913}
+  - component: {fileID: 257447919}
   - component: {fileID: 257447915}
   - component: {fileID: 257447916}
   - component: {fileID: 257447918}
   - component: {fileID: 257447917}
   - component: {fileID: 257447920}
-  - component: {fileID: 257447919}
   - component: {fileID: 257447921}
   - component: {fileID: 257447922}
   m_Layer: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   attackPower: 20
-  attackRange: 6
+  attackRange: 4
   span: 1
 --- !u!114 &257447920
 MonoBehaviour:

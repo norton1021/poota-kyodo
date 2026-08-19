@@ -5,7 +5,7 @@ public class PlayerAttack :MonoBehaviour
     // UŒ‚—Í
     public int attackPower = 20;
     // UŒ‚”ÍˆÍ
-    public float attackRange = 6f;
+    public float attackRange = 4f;
     // UŒ‚ŠÔŠu
     public float span = 1.0f;
     float delta = 0;

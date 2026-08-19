@@ -4,8 +4,9 @@ public class CircleRenderer : MonoBehaviour
 {
     public int segments = 60;
     private LineRenderer line;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         line = gameObject.AddComponent<LineRenderer>();
@@ -18,6 +19,7 @@ public class CircleRenderer : MonoBehaviour
     }
 
     // Update is called once per frame
+
     public void DrawCircle(float radius)
     {
         // çUåÇîÕàÕÇê‘Ç¢â~Ç≈ï\é¶Ç∑ÇÈ
@@ -29,4 +31,5 @@ public class CircleRenderer : MonoBehaviour
             line.SetPosition(i, new Vector3(x, y, 0) + transform.position);
         }
     }
+    
 }
