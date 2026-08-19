@@ -20,7 +20,7 @@ public class CircleRenderer : MonoBehaviour
     // Update is called once per frame
     public void DrawCircle(float radius)
     {
-        // UŒ‚”ÍˆÍ‚ğÔ‚­•\¦‚·‚é
+        // UŒ‚”ÍˆÍ‚ğÔ‚¢‰~‚Å•\¦‚·‚é
         for (int i = 0; i <= segments; i++)
         {
             float angle = i * Mathf.PI * 2f / segments;
