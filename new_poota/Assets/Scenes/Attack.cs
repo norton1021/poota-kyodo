@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAttack :MonoBehaviour
 {
     public int attackPower = 20;
-    public float attackRange = 1.5f;
+    public float attackRange = 6f;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

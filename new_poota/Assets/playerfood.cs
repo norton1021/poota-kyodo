@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class playerfood : MonoBehaviour
 {
+    public PlayerLevel playerLevel;
     public GameObject food;
     public GameObject holdpoint;
     public bool hasfood = false;
@@ -48,5 +49,6 @@ public class playerfood : MonoBehaviour
         food.transform.SetParent(null);
         food.SetActive(false);
         Debug.Log("”L‚ÉH‚×•¨‚ğ‚ ‚°‚½");
+        playerLevel.AddExperience(20);
     }
 }
