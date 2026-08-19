@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CircleRenderer : MonoBehaviour
 {
-    public float radius = 1.5f;
     public int segments = 60;
     private LineRenderer line;
 
@@ -16,13 +15,12 @@ public class CircleRenderer : MonoBehaviour
         line.material = new Material(Shader.Find("Sprites/Default"));
         line.startColor = Color.red;
         line.endColor = Color.red;
-
-        DrawCircle();
     }
 
     // Update is called once per frame
-    void DrawCircle()
+    public void DrawCircle(float radius)
     {
+        // UŒ‚”ÍˆÍ‚ğÔ‚­•\¦‚·‚é
         for (int i = 0; i <= segments; i++)
         {
             float angle = i * Mathf.PI * 2f / segments;

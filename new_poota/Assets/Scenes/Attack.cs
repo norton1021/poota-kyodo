@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class PlayerAttack :MonoBehaviour
 {
+    // UŒ‚—Í
     public int attackPower = 20;
+    // UŒ‚”ÍˆÍ
     public float attackRange = 6f;
+    // UŒ‚ŠÔŠu
     public float span = 1.0f;
     float delta = 0;
 
@@ -15,14 +18,10 @@ public class PlayerAttack :MonoBehaviour
             this.delta = 0;
             Attack();
         }
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
-            { 
-            Attack();
-        }*/
     }
     void Attack()
     {
+        GetComponent<CircleRenderer>().DrawCircle(attackRange);
         Debug.Log("UŒ‚‚µ‚½");
         Collider2D[] hitEnemies=Physics2D.OverlapCircleAll(
             transform.position, attackRange);
