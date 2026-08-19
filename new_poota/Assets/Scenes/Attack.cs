@@ -3,13 +3,23 @@ using UnityEngine;
 public class PlayerAttack :MonoBehaviour
 {
     public int attackPower = 20;
-    public float attackRange = 1.5f;
+    public float attackRange = 2f;
+    public float span = 1.0f;
+    float delta = 0;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            { 
+        this.delta += Time.deltaTime;
+        if (this.delta > this.span)
+        {
+            this.delta = 0;
             Attack();
         }
+
+        /*if (Input.GetKeyDown(KeyCode.Space))
+            { 
+            Attack();
+        }*/
     }
     void Attack()
     {
