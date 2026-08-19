@@ -772,24 +772,14 @@ MonoBehaviour:
   expBar: {fileID: 169006549}
   levelText: {fileID: 1757135095}
   expText: {fileID: 1559780684}
-<<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1 &262130241
 GameObject:
-=======
 --- !u!114 &257447922
 MonoBehaviour:
->>>>>>> 652224b2eb8791a8fb83db5e9e11d5094f100d0e
-=======
---- !u!114 &257447922
-MonoBehaviour:
->>>>>>> 17aa6add4aa9d444731fedd2e15b18539ed48e3b
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 262130242}
@@ -820,9 +810,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
-=======
->>>>>>> 17aa6add4aa9d444731fedd2e15b18539ed48e3b
   m_GameObject: {fileID: 257447912}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -830,10 +817,6 @@ RectTransform:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircleRenderer
   segments: 60
-<<<<<<< HEAD
->>>>>>> 652224b2eb8791a8fb83db5e9e11d5094f100d0e
-=======
->>>>>>> 17aa6add4aa9d444731fedd2e15b18539ed48e3b
 --- !u!1 &320741496
 GameObject:
   m_ObjectHideFlags: 0
