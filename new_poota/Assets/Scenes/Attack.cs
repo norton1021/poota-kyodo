@@ -2,17 +2,26 @@ using UnityEngine;
 
 public class PlayerAttack :MonoBehaviour
 {
+    // çUåÇóÕ
     public int attackPower = 20;
-    public float attackRange = 6f;
+    // çUåÇîÕàÕ
+    public float attackRange = 4f;
+    // çUåÇä‘äu
+    public float span = 1.0f;
+    float delta = 0;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            { 
+        this.delta += Time.deltaTime;
+        if (this.delta > this.span)
+        {
+            this.delta = 0;
             Attack();
         }
     }
     void Attack()
     {
+        GetComponent<CircleRenderer>().DrawCircle(attackRange);
         Debug.Log("çUåÇÇµÇΩ");
         Collider2D[] hitEnemies=Physics2D.OverlapCircleAll(
             transform.position, attackRange);

@@ -535,13 +535,14 @@ GameObject:
   m_Component:
   - component: {fileID: 257447914}
   - component: {fileID: 257447913}
+  - component: {fileID: 257447919}
   - component: {fileID: 257447915}
   - component: {fileID: 257447916}
   - component: {fileID: 257447918}
   - component: {fileID: 257447917}
   - component: {fileID: 257447920}
-  - component: {fileID: 257447919}
   - component: {fileID: 257447921}
+  - component: {fileID: 257447922}
   m_Layer: 0
   m_Name: speaker2_0
   m_TagString: Player
@@ -738,7 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   attackPower: 20
-  attackRange: 1.5
+  attackRange: 4
+  span: 1
 --- !u!114 &257447920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,12 +772,18 @@ MonoBehaviour:
   expBar: {fileID: 169006549}
   levelText: {fileID: 1757135095}
   expText: {fileID: 1559780684}
+<<<<<<< HEAD
 --- !u!1 &262130241
 GameObject:
+=======
+--- !u!114 &257447922
+MonoBehaviour:
+>>>>>>> 652224b2eb8791a8fb83db5e9e11d5094f100d0e
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 262130242}
@@ -806,6 +814,15 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+  m_GameObject: {fileID: 257447912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f486ab15efa0f3b48b884bd6cdc226e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CircleRenderer
+  segments: 60
+>>>>>>> 652224b2eb8791a8fb83db5e9e11d5094f100d0e
 --- !u!1 &320741496
 GameObject:
   m_ObjectHideFlags: 0
