@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAttack :MonoBehaviour
 {
     public int attackPower = 20;
-    public float attackRange = 2f;
+    public float attackRange = 6f;
     public float span = 1.0f;
     float delta = 0;
 
