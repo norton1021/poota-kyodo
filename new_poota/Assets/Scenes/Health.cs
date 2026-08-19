@@ -13,16 +13,15 @@ public class Health : MonoBehaviour
     public void TakeDamage(int Damage)
     {
         currentHP -= Damage;
-        Debug.Log(gameObject.name + "HP:" + currentHP);
         if (currentHP <= 0)
         {
-            Die();
+            Debug.Log(gameObject.name + "‚Í“|‚ê‚½");
+            Destroy(gameObject);
         }
-    }
-    void Die()
-    {
-        Debug.Log(gameObject.name + "‚ª“|‚ê‚½");
-        Destroy(gameObject);
+        else
+        {
+            Debug.Log(gameObject.name + " HP:" + currentHP);
+        }
     }
 }
 

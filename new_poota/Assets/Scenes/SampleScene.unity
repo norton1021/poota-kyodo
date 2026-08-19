@@ -535,7 +535,6 @@ GameObject:
   m_Component:
   - component: {fileID: 257447914}
   - component: {fileID: 257447913}
-  - component: {fileID: 257447919}
   - component: {fileID: 257447915}
   - component: {fileID: 257447916}
   - component: {fileID: 257447918}
@@ -726,21 +725,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &257447919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257447912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4104b04030b57a84abe11772ce7f8236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackPower: 20
-  attackRange: 4
-  span: 1
 --- !u!114 &257447920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,9 +765,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 257447912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Fill Area
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 11500000, guid: 4104b04030b57a84abe11772ce7f8236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  attackPower: 20
+  attackRange: 4
+  span: 60
+  startFrame: 55
+  endFrame: 60
 --- !u!1 &262130241
 GameObject:
   m_ObjectHideFlags: 0

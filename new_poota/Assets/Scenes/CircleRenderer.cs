@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CircleRenderer : MonoBehaviour
 {
+    public float radius = 1.5f;
     public int segments = 60;
     private LineRenderer line;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
     void Start()
     {
         line = gameObject.AddComponent<LineRenderer>();
@@ -19,10 +19,9 @@ public class CircleRenderer : MonoBehaviour
     }
 
     // Update is called once per frame
-
     public void DrawCircle(float radius)
     {
-        // UŒ‚”ÍˆÍ‚ğÔ‚¢‰~‚Å•\¦‚·‚é
+        // UŒ‚”ÍˆÍ‚ğÔ‚­•\¦‚·‚é
         for (int i = 0; i <= segments; i++)
         {
             float angle = i * Mathf.PI * 2f / segments;
@@ -31,5 +30,4 @@ public class CircleRenderer : MonoBehaviour
             line.SetPosition(i, new Vector3(x, y, 0) + transform.position);
         }
     }
-    
 }

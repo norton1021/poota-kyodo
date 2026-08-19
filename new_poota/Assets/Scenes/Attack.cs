@@ -1,41 +1,62 @@
 using UnityEngine;
 
-public class PlayerAttack :MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
     // UŒ‚—Í
     public int attackPower = 20;
     // UŒ‚”ÍˆÍ
     public float attackRange = 4f;
-    // UŒ‚ŠÔŠu
-    public float span = 1.0f;
-    float delta = 0;
+    // i‰Šú’l0‚©‚ç‚ÌjUŒ‚ŠÔŠu
+    public int span = 60;
+    // i‰Šú’l0‚©‚ç‚ÌjUŒ‚”»’è”­¶ƒtƒŒ[ƒ€
+    public int startFrame = 59;
+    // i‰Šú’l0‚©‚ç‚ÌjUŒ‚”»’èÁ–ÅƒtƒŒ[ƒ€
+    public int endFrame= 60;
+    // ƒtƒŒ[ƒ€ƒJƒEƒ“ƒg
+    private int frameCounter = 0;
+    // UŒ‚”»’è‚Ì—L–³
+    private bool isActive = false;
 
     void Update()
     {
-        this.delta += Time.deltaTime;
-        if (this.delta > this.span)
+        frameCounter++;
+
+        if (frameCounter >= startFrame)
         {
-            this.delta = 0;
+            isActive = true;
+        }
+
+        if (frameCounter >= endFrame)
+        {
+            isActive = false;
+        }
+
+        if (isActive)
+        {
             Attack();
+        }
+
+        if (frameCounter >= span)
+        {
+            frameCounter = 0;
         }
     }
     void Attack()
     {
         GetComponent<CircleRenderer>().DrawCircle(attackRange);
-        Debug.Log("UŒ‚‚µ‚½");
-        Collider2D[] hitEnemies=Physics2D.OverlapCircleAll(
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
             transform.position, attackRange);
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log("UŒ‚”ÍˆÍ“à" + enemy.gameObject.name);
             if (enemy.CompareTag("Enemy"))
             {
-                Health health1 = enemy.GetComponentInParent<Health>();
-                Health health = health1;
+                Debug.Log("UŒ‚”ÍˆÍ“à" + enemy.gameObject.name);
+                Health health = enemy.GetComponent<Health>();
                 if (health != null)
                 {
-                    health.TakeDamage(attackPower);
                     Debug.Log("“G‚Éƒ_ƒ[ƒW");
+                    health.TakeDamage(attackPower);
+                    
                 }
                 else
                 {
@@ -43,6 +64,5 @@ public class PlayerAttack :MonoBehaviour
                 }
             }
         }
-        Debug.Log("UŒ‚");
     }
 }
