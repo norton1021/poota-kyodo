@@ -33,4 +33,11 @@ public class EnemyController : MonoBehaviour
         // 直線的に移動（回転なし）
         transform.position += direction * enemyStatus.speed * Time.deltaTime;
     }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        EnemyStatus enemyStatus = GetComponent<EnemyStatus>();
+        PlayerStatus playerStatus = collision.gameObject.GetComponent<PlayerStatus>();
+        playerStatus.PlayerDecreaceHp(enemyStatus.power);
+    }
 }
