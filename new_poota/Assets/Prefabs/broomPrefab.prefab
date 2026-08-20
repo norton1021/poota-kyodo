@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   maxHP: 50
-  power: 20
+  power: 5
   speed: 2
   invincibleTime: 10
 --- !u!114 &2393079397310790048

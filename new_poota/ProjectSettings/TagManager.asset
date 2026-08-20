@@ -4,10 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - cat
-  - food
   - Enemy
-  - enemy
+  - Food
+  - Cat
   layers:
   - Default
   - TransparentFX
