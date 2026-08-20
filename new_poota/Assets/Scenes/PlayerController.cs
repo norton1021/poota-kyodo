@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public int endFrame = 60;
 
     // フレームカウント
-    int frameCounter = 0;
+    int frameCount = 0;
     // 攻撃判定の有無
     bool isActive = false;
 
@@ -57,16 +57,18 @@ public class PlayerController : MonoBehaviour
             transform.Translate(0, -0.1f * playerStatus.speed, 0);
         }
 
-        frameCounter++;
+        frameCount++;
 
-        if (frameCounter >= startFrame)
+        if (frameCount >= startFrame)
         {
             isActive = true;
+            GetComponent<CircleRenderer>().line.enabled = true;
         }
 
-        if (frameCounter >= endFrame)
+        if (frameCount >= endFrame)
         {
             isActive = false;
+            GetComponent<CircleRenderer>().line.enabled = false;
         }
 
         if (isActive)
@@ -74,9 +76,9 @@ public class PlayerController : MonoBehaviour
             PlayerNormalAttack(range, playerStatus.power);
         }
 
-        if (frameCounter >= span)
+        if (frameCount >= span)
         {
-            frameCounter = 0;
+            frameCount = 0;
         }
     }
 
@@ -90,7 +92,6 @@ public class PlayerController : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
-                Debug.Log("攻撃範囲内:" + enemy.gameObject.name);
                 EnemyStatus enemyStatus = enemy.GetComponent<EnemyStatus>();
                 if (enemyStatus != null)
                 {

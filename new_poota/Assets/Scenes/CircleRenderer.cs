@@ -3,9 +3,8 @@ using UnityEngine;
 public class CircleRenderer : MonoBehaviour
 {
     int segments = 60;
-    LineRenderer line;
+    public LineRenderer line;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         line = gameObject.AddComponent<LineRenderer>();
@@ -17,7 +16,6 @@ public class CircleRenderer : MonoBehaviour
         line.endColor = Color.red;
     }
 
-    // Update is called once per frame
     public void DrawCircle(float radius)
     {
         // UŒ‚”ÍˆÍ‚ğÔ‚­•\¦‚·‚é
