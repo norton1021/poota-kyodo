@@ -3,6 +3,7 @@ using UnityEngine;
 public class playerfood : MonoBehaviour
 {
     public PlayerLevel playerLevel;
+    public CatHunger catHunger;
     public GameObject food;
     public GameObject holdpoint;
     public bool hasfood = false;
@@ -50,5 +51,6 @@ public class playerfood : MonoBehaviour
         food.SetActive(false);
         Debug.Log("”L‚ÉH‚×•¨‚ğ‚ ‚°‚½");
         playerLevel.AddExperience(20);
+        catHunger.Feed(30);
     }
 }
