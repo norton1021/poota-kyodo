@@ -599,7 +599,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 392723650977616990, guid: 094810d9a57a0ed49a0ed7a0b0b17abe, type: 3}
+  m_Sprite: {fileID: -4133073178453880821, guid: 2340d37b67dc5aa4a8f2c7fa59b72ac3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerfood
   playerLevel: {fileID: 257447921}
+  catHunger: {fileID: 0}
   food: {fileID: 185301251}
   holdpoint: {fileID: 320741496}
   hasfood: 0
@@ -691,7 +692,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.32, y: 3.4}
+    oldSize: {x: 15.55, y: 16.64}
     newSize: {x: 3.32, y: 3.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1588,7 +1589,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 14.41}
+    oldSize: {x: 3.63, y: 4.51}
     newSize: {x: 19.2, y: 14.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1645,7 +1646,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1075993247170539406, guid: d63b479b0c72e374b96dbe4e791f0e58, type: 3}
+  m_Sprite: {fileID: 2636693211637836712, guid: bc92319d27bf7464f9058b68de1b8d5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
