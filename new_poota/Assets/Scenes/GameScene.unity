@@ -331,9 +331,9 @@ RectTransform:
   - {fileID: 580132297}
   m_Father: {fileID: 2119603025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353.39996, y: -186.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -85.60004, y: 28.5}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &169006549
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 185301252}
   m_Layer: 0
   m_Name: syo-to_0
-  m_TagString: food
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,9 +745,6 @@ MonoBehaviour:
   level: 1
   experience: 0
   experienceToNextLevel: 100
-  expBar: {fileID: 169006549}
-  levelText: {fileID: 1757135095}
-  expText: {fileID: 1559780684}
 --- !u!114 &257447923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +773,7 @@ MonoBehaviour:
   maxHP: 100
   power: 20
   speed: 1
+  invincibleTime: 10
 --- !u!1 &262130241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1331,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  span: 60
+  limit: 20
+  enemyCount: 0
 --- !u!4 &828103991
 Transform:
   m_ObjectHideFlags: 0
@@ -1511,6 +1512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1061117210}
+  - component: {fileID: 1061117211}
   m_Layer: 0
   m_Name: GameDirector
   m_TagString: Untagged
@@ -1533,6 +1535,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061117211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061117209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80799030fdcdac34fab32ec22eff33e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameDirector
 --- !u!1 &1122484262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,7 +1597,7 @@ GameObject:
   - component: {fileID: 1428458405}
   m_Layer: 0
   m_Name: cat_0
-  m_TagString: cat
+  m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1759,9 +1773,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2119603025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 398, y: -171.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -41, y: 43.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559780684
@@ -1784,7 +1798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXP0/100
+  m_text: EXP 0/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1971,9 +1985,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2119603025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 443, y: -134}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 4, y: 81}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757135095

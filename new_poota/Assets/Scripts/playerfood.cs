@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class playerfood : MonoBehaviour
 {
@@ -7,15 +8,15 @@ public class playerfood : MonoBehaviour
     public GameObject food;
     public GameObject holdpoint;
     public bool hasfood = false;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Keyboard.current.eKey.isPressed)
         {
             if (!hasfood && food != null)
             {
-                float foodDistance = Vector2.Distance(
-                    transform.position, food.transform.position);
-                if (foodDistance < 1.5f) 
+                Collider2D hitFood = Physics2D.OverlapCircle(transform.position, 1.5f);
+                if (hitFood.CompareTag("Food"))
                 {
                     PickUpFood();
                     return;
@@ -23,12 +24,11 @@ public class playerfood : MonoBehaviour
             }
             if (hasfood)
             {
-                GameObject cat = GameObject.FindGameObjectWithTag("cat");
+                GameObject cat = GameObject.FindGameObjectWithTag("Cat");
                 if (cat != null)
                 {
-                    float catDistance = Vector2.Distance(
-                        transform.position, cat.transform.position);
-                    if (catDistance < 1.5f)
+                    Collider2D hitCat = Physics2D.OverlapCircle(transform.position, 1.5f);
+                    if (hitCat.CompareTag("Cat"))
                     {
                         GiveFoodToCat(cat);
                     }
@@ -36,6 +36,7 @@ public class playerfood : MonoBehaviour
             }
         }
     }
+
     void PickUpFood()
     {
         hasfood = true;
@@ -51,6 +52,6 @@ public class playerfood : MonoBehaviour
         food.SetActive(false);
         Debug.Log("”L‚ÉH‚×•¨‚ð‚ ‚°‚½");
         playerLevel.AddExperience(20);
-        catHunger.Feed(30);
+        cat.GetComponent<CatHunger>().Feed(30);
     }
 }

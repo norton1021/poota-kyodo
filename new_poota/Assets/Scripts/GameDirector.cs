@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameDirector : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    GameObject expBarUI;
+    GameObject levelTextUI;
+    GameObject expTextUI;
+
     void Start()
     {
-        
+        this.expBarUI = GameObject.Find("ExpBar");
+        this.levelTextUI = GameObject.Find("LevelText");
+        this.expTextUI = GameObject.Find("ExpText");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void expUI(int level, int experience, int experienceToNextLevel)
     {
-        
+        this.levelTextUI.GetComponent<TextMeshProUGUI>().text = "Lv." + level;
+        this.expTextUI.GetComponent<TextMeshProUGUI>().text = "EXP " + experience + "/" + experienceToNextLevel;
+        this.expBarUI.GetComponent<Slider>().maxValue = experienceToNextLevel;
+        this.expBarUI.GetComponent<Slider>().value = experience;
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 public class CatHunger : MonoBehaviour
 {
     [Header("ãÛï†ê›íË")]
@@ -10,6 +11,7 @@ public class CatHunger : MonoBehaviour
     public Slider hungerSlider;
     public GameObject hungerBubble;
     public float hungerWarning = 30f;
+
     void Start()
     {
         currentHunger = maxHunger;
@@ -23,6 +25,7 @@ public class CatHunger : MonoBehaviour
             hungerBubble.SetActive(false);
         }
     }
+
     void Update()
     {
         currentHunger -= hungerDecreaseSpeed * Time.deltaTime;
@@ -46,6 +49,7 @@ public class CatHunger : MonoBehaviour
             }
         }
     }
+
     public void Feed(float amount)
     {
         currentHunger += amount;
