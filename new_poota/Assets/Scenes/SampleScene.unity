@@ -638,7 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   range: 4
   span: 60
-  startFrame: 59
+  startFrame: 55
   endFrame: 60
 --- !u!114 &257447916
 MonoBehaviour:
@@ -760,6 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f486ab15efa0f3b48b884bd6cdc226e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircleRenderer
+  line: {fileID: 0}
 --- !u!114 &257447924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,6 +2576,7 @@ MonoBehaviour:
   maxHP: 50
   power: 20
   speed: 2
+  invincibleTime: 10
 --- !u!1 &2119603021
 GameObject:
   m_ObjectHideFlags: 0
