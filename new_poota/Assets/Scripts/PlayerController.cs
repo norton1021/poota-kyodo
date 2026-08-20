@@ -3,6 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    // プレイヤーの「食べ物に対する」当たり判定の半径
+    public float hitboxOfPlayer = 1.0f;
+    // 猫の「プレイヤーに対する」当たり判定の半径
+    public float hitboxOfCat = 1.0f;
     // 攻撃範囲
     public float range = 4f;
     // （初期値0からの）攻撃間隔
@@ -16,21 +20,18 @@ public class PlayerController : MonoBehaviour
     int frameCount = 0;
     // 攻撃判定の有無
     bool isActive = false;
+    // プレイヤーのステータス
+    GameObject player;
 
     void Start()
     {
         Application.targetFrameRate = 60;
+        this.player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        PlayerStatus playerStatus = GetComponent<PlayerStatus>();
-
-        // 食べ物を拾うことで減速
-        if (GetComponent<playerfood>().hasfood)
-            playerStatus.speed = 0.7f;
-        else
-            playerStatus.speed = 1.0f;
+        PlayerStatus playerStatus = this.player.GetComponent<PlayerStatus>();
 
         // Aキーで左に移動
         if (Keyboard.current.aKey.isPressed)
@@ -99,5 +100,16 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    // 食べ物を拾うことで減速
+    public void Decelerate(bool hasFood)
+    {
+        PlayerStatus playerStatus = this.player.GetComponent<PlayerStatus>();
+        if (hasFood)
+            playerStatus.speed = 0.7f;
+        else
+            playerStatus.speed = 1.0f;
+
     }
 }

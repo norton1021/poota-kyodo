@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class PlayerStatus : MonoBehaviour
             if (currentHP <= 0)
             {
                 Debug.Log(gameObject.name + "は倒れた");
-                Destroy(gameObject);
+                SceneManager.LoadScene("GameScene");
             }
             else
             {
