@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // UŒ‚—Í
+    // Šî‘bUŒ‚—Í
     public int attackPower = 20;
     // UŒ‚”ÍˆÍ
     public float attackRange = 4f;

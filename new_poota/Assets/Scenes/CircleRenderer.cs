@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class CircleRenderer : MonoBehaviour
 {
-    public float radius = 1.5f;
-    public int segments = 60;
-    private LineRenderer line;
+    int segments = 60;
+    LineRenderer line;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
