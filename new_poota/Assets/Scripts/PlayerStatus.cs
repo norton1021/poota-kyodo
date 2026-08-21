@@ -12,7 +12,6 @@ public class PlayerStatus : MonoBehaviour
     public float speed = 1.0f;
     // 無敵時間
     public int invincibleTime = 10;
-    public Slider playerHpSlider;
     // ゲームプレイ中の体力
     public int currentHP = 100;
     // 無敵かどうか
