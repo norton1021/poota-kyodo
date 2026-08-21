@@ -10,7 +10,7 @@ public class EnemyStatus : MonoBehaviour
     // 移動速度
     public float speed = 1.0f;
     // 無敵時間
-    public int invincibleTime = 10;
+    public int invincibleTime = 5;
     // 体力のUI
     public Slider enemyHpSlider;
     // UIの頭上位置

@@ -5,9 +5,9 @@ public class EnemyGenerator : MonoBehaviour
     // 生成する敵
     public GameObject[] enemyPrefab = new GameObject[5];
     // 生成のクールタイム
-    public int span = 60;
+    public int span = 10;
     // 生成数の上限
-    public int limit = 20;
+    public int limit = 100;
     // 生成数のカウント
     public int enemyCount = 0;
 
@@ -31,10 +31,32 @@ public class EnemyGenerator : MonoBehaviour
             if (enemyCount < limit)
             {
                 enemyCount++;
+                Vector3 randomPosition= InstantiatePosition();
+                Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + randomPosition);
+                enemyPosition.z = 0;
                 GameObject go = Instantiate(enemyPrefab[0]);
-                int px = Random.Range(-6, 7);
-                go.transform.position = new Vector3(px, 7, 0);
+                go.transform.position = enemyPosition;
             }    
+        }
+    }
+
+    Vector3 InstantiatePosition()
+    {
+        // 画面の上下左右どこから生成するかを決める変数
+        int select = Random.Range(0, 4);
+        // 上下左右の画面幅のどのあたりから生成するかを決める変数
+        float random = Random.Range(-1f, 1f);
+
+        switch (select)
+        {
+            case 0:
+                return new Vector3(random, 1f, 0);
+            case 1:
+                return new Vector3(random, -1f, 0);
+            case 2:
+                return new Vector3(1f, random, 0);
+            default:
+                return new Vector3(-1f, random, 0);
         }
     }
 }

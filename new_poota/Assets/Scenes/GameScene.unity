@@ -529,10 +529,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   hitboxOfPlayer: 1
   hitboxOfCat: 1
-  range: 4
-  span: 60
-  startFrame: 59
-  endFrame: 60
+  range: 5
+  span: 150
+  startFrame: 50
+  endFrame: 150
 --- !u!61 &257447917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -650,7 +650,6 @@ MonoBehaviour:
   power: 20
   speed: 1
   invincibleTime: 10
-  playerHpSlider: {fileID: 1705795940}
   currentHP: 100
 --- !u!1 &262130241
 GameObject:
@@ -1568,8 +1567,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  span: 60
-  limit: 20
+  span: 10
+  limit: 100
   enemyCount: 0
 --- !u!4 &828103991
 Transform:
