@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerStatus : MonoBehaviour
     public float speed = 1.0f;
     // 無敵時間
     public int invincibleTime = 10;
-
+    public Slider hpSlider;
     // ゲームプレイ中の体力
     int currentHP = 100;
     // 無敵かどうか
@@ -22,6 +23,7 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        UpdateHPUI();
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class PlayerStatus : MonoBehaviour
         {
             invincible = true;
             currentHP -= damage;
+            UpdateHPUI();
             if (currentHP <= 0)
             {
                 Debug.Log(gameObject.name + "は倒れた");
@@ -52,6 +55,13 @@ public class PlayerStatus : MonoBehaviour
             {
                 Debug.Log(gameObject.name + " HP:" + currentHP);
             }
+        }
+    }
+    void UpdateHPUI()
+    {
+        if (hpSlider != null)
+        {
+            hpSlider.value = currentHP / maxHP;
         }
     }
 }
