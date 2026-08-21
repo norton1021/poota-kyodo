@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2393079397310790048}
   - component: {fileID: 5454192972888659066}
   m_Layer: 0
-  m_Name: broomPrefab
+  m_Name: Enemy_BroomPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
