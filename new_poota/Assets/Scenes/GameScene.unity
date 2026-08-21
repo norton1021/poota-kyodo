@@ -801,7 +801,7 @@ MonoBehaviour:
   power: 20
   speed: 1
   invincibleTime: 10
-  hpSlider: {fileID: 1705795940}
+  playerHpSlider: {fileID: 1705795940}
 --- !u!1 &262130241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2067,7 @@ GameObject:
   - component: {fileID: 1705795939}
   - component: {fileID: 1705795940}
   m_Layer: 5
-  m_Name: PlayerHPBar
+  m_Name: PlayerHpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
