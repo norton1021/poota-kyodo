@@ -12,7 +12,7 @@ public class FoodSetting : MonoBehaviour
     // 食べ物を持つ場所
     Transform target;
     // 食べ物を持っているかどうか
-    public bool hasFood = false;
+    bool hasFood = false;
 
     GameObject player;
     GameObject cat;
