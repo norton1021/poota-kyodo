@@ -5,6 +5,17 @@ public class PlayerLevel : MonoBehaviour
     public int level = 1;
     public int experience = 0;
     public int experienceToNextLevel = 100;
+    GameObject director;
+
+    void Start()
+    {
+        this.director = GameObject.Find("GameDirector");
+    }
+
+    void Update()
+    {
+        this.director.GetComponent<GameDirector>().expUI(level, experience, experienceToNextLevel);
+    }
 
     public void AddExperience(int amount)
     {
@@ -15,8 +26,7 @@ public class PlayerLevel : MonoBehaviour
             experience -= experienceToNextLevel;
             LevelUp();
         }
-        GameObject director = GameObject.Find("GameDirector");
-        director.GetComponent<GameDirector>().expUI(level, experience, experienceToNextLevel);
+        this.director.GetComponent<GameDirector>().expUI(level, experience, experienceToNextLevel);
     }
 
     void LevelUp()
