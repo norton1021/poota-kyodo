@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   maxHP: 50
-  power: 5
+  power: 0
   speed: 2
   invincibleTime: 10
   enemyHpSlider: {fileID: 8737374018035705844}

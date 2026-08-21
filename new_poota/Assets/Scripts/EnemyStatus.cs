@@ -60,13 +60,7 @@ public class EnemyStatus : MonoBehaviour
             {
                 GameObject generator = GameObject.Find("EnemyGenerator");
                 generator.GetComponent<EnemyGenerator>().enemyCount--;
-                Debug.Log(gameObject.name + "は倒れた");
                 Destroy(gameObject);
-            }
-            
-            else
-            {
-                Debug.Log(gameObject.name + " HP:" + currentHP);
             }
         }
     }

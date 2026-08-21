@@ -16,7 +16,15 @@ public class EnemyGenerator : MonoBehaviour
 
     void Update()
     {
-        frameCount++;
+        if (enemyCount < limit)
+        {
+            frameCount++;
+        }
+        else
+        {
+            frameCount = 0;
+        }
+        
         if (frameCount >= span)
         {
             frameCount = 0;
