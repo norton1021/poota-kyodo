@@ -11,22 +11,33 @@ public class EnemyStatus : MonoBehaviour
     public float speed = 1.0f;
     // 無敵時間
     public int invincibleTime = 10;
-    public Slider hpSlider;
+    // 体力のUI
+    public Slider enemyHpSlider;
+    // UIの頭上位置
+    public Vector3 uiOffset = new Vector3(0, 1f, 0);
+
     // ゲームプレイ中の体力
     int currentHP = 100;
     // 無敵かどうか
     bool invincible = false;
     // フレームカウント
     int frameCount = 0;
+    // カメラ
+    Camera mainCamera;
 
     void Start()
     {
         currentHP = maxHP;
-        UpdateHPUI();
+        UpdateHpUI();
     }
 
     void Update()
     {
+        if (enemyHpSlider != null)
+        {
+            enemyHpSlider.transform.position = transform.position + uiOffset;
+        }
+
         if (invincible)
         {
             frameCount++;
@@ -44,13 +55,13 @@ public class EnemyStatus : MonoBehaviour
         {
             invincible = true;
             currentHP -= damage;
+            UpdateHpUI();
             if (currentHP <= 0)
             {
                 GameObject generator = GameObject.Find("EnemyGenerator");
                 generator.GetComponent<EnemyGenerator>().enemyCount--;
                 Debug.Log(gameObject.name + "は倒れた");
                 Destroy(gameObject);
-                UpdateHPUI();
             }
             
             else
@@ -59,11 +70,12 @@ public class EnemyStatus : MonoBehaviour
             }
         }
     }
-    void UpdateHPUI()
+    void UpdateHpUI()
     {
-        if (hpSlider != null)
+        if (enemyHpSlider != null)
         {
-            hpSlider.value = currentHP / maxHP;
+            enemyHpSlider.maxValue = maxHP;
+            enemyHpSlider.value = currentHP;
         }
     }
 }
