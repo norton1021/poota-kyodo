@@ -101,15 +101,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    // H‚×•¨‚ğE‚¤‚±‚Æ‚ÅŒ¸‘¬
-    public void Decelerate(bool hasFood)
-    {
-        PlayerStatus playerStatus = this.player.GetComponent<PlayerStatus>();
-        if (hasFood)
-            playerStatus.speed = 0.7f;
-        else
-            playerStatus.speed = 1.0f;
-
-    }
 }

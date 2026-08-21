@@ -51,10 +51,6 @@ public class PlayerStatus : MonoBehaviour
                 Debug.Log(gameObject.name + "は倒れた");
                 SceneManager.LoadScene("GameScene");
             }
-            else
-            {
-                Debug.Log(gameObject.name + " HP:" + currentHP);
-            }
         }
     }
     void UpdateHpUI()
