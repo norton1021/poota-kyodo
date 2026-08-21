@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 185301253}
   - component: {fileID: 185301255}
   m_Layer: 0
-  m_Name: Shortcake
+  m_Name: Food_Shortcake
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 1428458402}
   - component: {fileID: 1428458405}
   m_Layer: 0
-  m_Name: cataro
+  m_Name: Cataro
   m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
