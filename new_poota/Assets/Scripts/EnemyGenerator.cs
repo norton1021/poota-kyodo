@@ -31,11 +31,12 @@ public class EnemyGenerator : MonoBehaviour
             if (enemyCount < limit)
             {
                 enemyCount++;
-                Vector3 randomPosition= InstantiatePosition();
+                Vector3 randomPosition = InstantiatePosition();
                 Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + randomPosition);
                 enemyPosition.z = 0;
                 GameObject go = Instantiate(enemyPrefab[0]);
                 go.transform.position = enemyPosition;
+                go.GetComponent<EnemyStatus>().currentHP = go.GetComponent<EnemyStatus>().maxHP;
             }    
         }
     }

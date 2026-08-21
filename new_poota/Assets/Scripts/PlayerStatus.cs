@@ -14,6 +14,7 @@ public class PlayerStatus : MonoBehaviour
     public int invincibleTime = 10;
     // ゲームプレイ中の体力
     public int currentHP = 100;
+
     // 無敵かどうか
     bool invincible = false;
     // フレームカウント
