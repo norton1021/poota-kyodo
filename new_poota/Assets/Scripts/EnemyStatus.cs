@@ -15,9 +15,9 @@ public class EnemyStatus : MonoBehaviour
     public Slider enemyHpSlider;
     // UIの頭上位置
     public Vector3 uiOffset = new Vector3(0, 1f, 0);
-
     // ゲームプレイ中の体力
-    int currentHP = 100;
+    public int currentHP = 100;
+
     // 無敵かどうか
     bool invincible = false;
     // フレームカウント
