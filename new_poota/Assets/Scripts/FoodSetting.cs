@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,8 @@ public class FoodSetting : MonoBehaviour
     public GameObject holdPoint;
     // 食べ物を持っているかどうか
     public bool hasFood = false;
+    public int Span=600;
+    public int frameCount = 0;
 
     GameObject player;
     GameObject cat;
@@ -64,6 +67,15 @@ public class FoodSetting : MonoBehaviour
         transform.SetParent(holdPoint.transform);
         transform.localPosition = Vector3.zero;
         Debug.Log(gameObject.name + "を拾った");
+        if (frameCount > Span)
+        {
+            frameCount--;
+            gameObject.SetActive(false);
+        }
+        if (frameCount == 0)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     void GiveFoodToCat()
@@ -75,4 +87,6 @@ public class FoodSetting : MonoBehaviour
         this.cat.GetComponent<CatHunger>().Feed(feed);
         Destroy(gameObject);
     }
+   
+   
 }
