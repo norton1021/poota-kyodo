@@ -22,8 +22,8 @@ public class EnemyStatus : MonoBehaviour
     bool invincible = false;
     // フレームカウント
     int frameCount = 0;
-    // カメラ
-    Camera mainCamera;
+    // 画面外に居たフレームのカウント
+    int outsideFrameCount = 0;
 
     void Start()
     {
@@ -47,6 +47,19 @@ public class EnemyStatus : MonoBehaviour
                 frameCount = 0;
             }
         }
+
+        // 画面外に居た時間が長すぎると消滅
+        if (transform.position.x > Camera.main.ViewportToWorldPoint(new Vector3(1.25f, 0.5f, Camera.main.nearClipPlane)).x ||
+            transform.position.x < Camera.main.ViewportToWorldPoint(new Vector3(-0.25f, 0.5f, Camera.main.nearClipPlane)).x ||
+            transform.position.y > Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.25f, Camera.main.nearClipPlane)).y ||
+            transform.position.y < Camera.main.ViewportToWorldPoint(new Vector3(0.5f, -0.25f, Camera.main.nearClipPlane)).y)
+        {
+            outsideFrameCount++;
+        }
+        if (outsideFrameCount >= 120)
+        {
+            Defeat();
+        }
     }
 
     public void EnemyDecreaceHp(int damage)
@@ -58,12 +71,17 @@ public class EnemyStatus : MonoBehaviour
             UpdateHpUI();
             if (currentHP <= 0)
             {
-                GameObject generator = GameObject.Find("EnemyGenerator");
-                generator.GetComponent<EnemyGenerator>().enemyCount--;
-                Destroy(gameObject);
+                Defeat();
             }
         }
     }
+    public void Defeat()
+    {
+        GameObject generator = GameObject.Find("EnemyGenerator");
+        generator.GetComponent<EnemyGenerator>().enemyCount--;
+        Destroy(gameObject);
+    }
+
     void UpdateHpUI()
     {
         if (enemyHpSlider != null)
