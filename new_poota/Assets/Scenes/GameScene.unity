@@ -1567,8 +1567,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  span: 10
-  limit: 100
+  span: 2
+  limit: 500
   enemyCount: 0
 --- !u!4 &828103991
 Transform:
