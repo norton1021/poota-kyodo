@@ -3,12 +3,15 @@ using UnityEngine.InputSystem;
 
 public class FoodSetting : MonoBehaviour
 {
+    // 食べ物の名前
+    
     // 食べ物の経験値
     public int exp = 20;
     // 食べ物の満腹度
     public int feed = 30;
     // 食べ物の「プレイヤーに対する」当たり判定の半径
     public float hitboxOfFoods = 1.0f;
+
     // 食べ物を持つ場所
     Transform target;
     // 食べ物を持っているかどうか

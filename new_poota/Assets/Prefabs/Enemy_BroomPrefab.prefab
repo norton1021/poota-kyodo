@@ -603,6 +603,7 @@ MonoBehaviour:
   invincibleTime: 5
   enemyHpSlider: {fileID: 8737374018035705844}
   uiOffset: {x: 0, y: 1, z: 0}
+  currentHP: 100
 --- !u!114 &2393079397310790048
 MonoBehaviour:
   m_ObjectHideFlags: 0

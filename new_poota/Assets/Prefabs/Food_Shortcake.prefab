@@ -107,5 +107,3 @@ MonoBehaviour:
   exp: 20
   feed: 30
   hitboxOfFoods: 1
-  holdPoint: {fileID: 0}
-  hasFood: 0
