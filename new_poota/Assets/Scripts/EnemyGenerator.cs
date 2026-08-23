@@ -5,7 +5,7 @@ public class EnemyGenerator : MonoBehaviour
     // 生成する敵
     public GameObject[] enemyPrefab = new GameObject[5];
     // 生成のクールタイム
-    public int span = 3;
+    public int span = 2;
     // 生成数の上限
     public int limit = 500;
     // 生成数のカウント
@@ -43,18 +43,20 @@ public class EnemyGenerator : MonoBehaviour
         // 画面の上下左右どこから生成するかを決める変数
         int select = Random.Range(0, 4);
         // 上下左右の画面幅のどのあたりから生成するかを決める変数
-        float random = Random.Range(-1f, 1f);
+        float random = Random.Range(-0.75f, 0.75f);
+        // プレイヤーからの離れ具合を決める変数
+        float randomWidth = Random.Range(0.75f, 1f);
 
         switch (select)
         {
             case 0:
-                return new Vector3(random, 1f, 0);
+                return new Vector3(random, randomWidth, 0);
             case 1:
-                return new Vector3(random, -1f, 0);
+                return new Vector3(random, -randomWidth, 0);
             case 2:
-                return new Vector3(1f, random, 0);
+                return new Vector3(randomWidth, random, 0);
             default:
-                return new Vector3(-1f, random, 0);
+                return new Vector3(-randomWidth, random, 0);
         }
     }
 }
