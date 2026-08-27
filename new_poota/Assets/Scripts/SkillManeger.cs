@@ -44,6 +44,8 @@ public class SkillManeger : MonoBehaviour
     void CloseSkillPanenl()
     {
         skillPanel.SetActive(false);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().control = true;
         Time.timeScale = 1f;
     }
 }

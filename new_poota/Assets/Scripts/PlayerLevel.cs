@@ -23,6 +23,7 @@ public class PlayerLevel : MonoBehaviour
         level++;
         experienceToNextLevel += 50;
         Debug.Log("レベルアップ Lv." + level);
+        GetComponent<PlayerController>().control = false;
         skillManeger.ShowSkillChoice();
     }
 }
