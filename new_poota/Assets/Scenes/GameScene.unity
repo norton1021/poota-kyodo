@@ -3079,7 +3079,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
-<<<<<<< HEAD
 --- !u!1001 &6659615354216011395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3146,8 +3145,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6475a7a000497d6428ab1fcac343a326, type: 3}
-=======
->>>>>>> a220c8820f2a22c3bda82aa0db5cd3c94453b412
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
