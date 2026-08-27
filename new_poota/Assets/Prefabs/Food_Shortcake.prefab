@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7668815651711689908}
   - component: {fileID: 2466240507601310456}
   - component: {fileID: 5257746128718317329}
+  - component: {fileID: 4532452977740030166}
   m_Layer: 0
   m_Name: Food_Shortcake
   m_TagString: Food
@@ -109,3 +110,17 @@ MonoBehaviour:
   hitboxOfFoods: 1
   holdPoint: {fileID: 0}
   hasFood: 0
+--- !u!114 &4532452977740030166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901267195803235853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a7ae1833cdb6047b9a89e80d0c4fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodGenerator
+  Span: 600
+  foodprefab: {fileID: 4901267195803235853}
