@@ -1,6 +1,30 @@
-unkooooooooooooo
-[merge]
- tool = unityyamlmerge
-[mergetool "unityyamlmerge"]
- trustExitCode = false
- cmd = 'C:\\Program Files\\Unity\\Hub\\Editor\\6000.4.6f1\\Editor\\Data\\Tools\\UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+-敵キャラ-
+・ほうき
+・ちりとり
+・ぞうきん
+・掃除機
+・すっぽん
+・スプレー
+・モップ
+・
+
+
+-スキル-
+攻撃
+・unkキャノン
+（自キャラを中心に8方向に弾を発射）
+・unkブーメラン
+（自キャラから左右に放ち戻ってくるブーメランを発射）
+・スティックガス
+（自キャラを中心に判定の持続時間が長いガスを放出する）
+・unkスキャッター
+（自キャラから全方位ランダムに16個のunkを放つ。unkは画面枠を3回反射する）
+・
+
+回復
+・unkにピース
+（発動で即時回復）
+・
+
+バフ
+・
