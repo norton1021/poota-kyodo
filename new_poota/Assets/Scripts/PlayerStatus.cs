@@ -12,9 +12,9 @@ public class PlayerStatus : MonoBehaviour
     public float speed = 1.0f;
     // 無敵時間
     public int invincibleTime = 10;
-    public Slider playerHpSlider;
     // ゲームプレイ中の体力
-    int currentHP = 100;
+    public int currentHP = 100;
+
     // 無敵かどうか
     bool invincible = false;
     // フレームカウント
@@ -23,7 +23,6 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
-        UpdateHpUI();
     }
 
     void Update()
@@ -45,24 +44,11 @@ public class PlayerStatus : MonoBehaviour
         {
             invincible = true;
             currentHP -= damage;
-            UpdateHpUI();
             if (currentHP <= 0)
             {
                 Debug.Log(gameObject.name + "は倒れた");
                 SceneManager.LoadScene("GameScene");
             }
-            else
-            {
-                Debug.Log(gameObject.name + " HP:" + currentHP);
-            }
-        }
-    }
-    void UpdateHpUI()
-    {
-        if (playerHpSlider != null)
-        {
-            playerHpSlider.maxValue = maxHP;
-            playerHpSlider.value = currentHP;
         }
     }
 }

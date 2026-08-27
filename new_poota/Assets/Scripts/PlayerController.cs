@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     // 猫の「プレイヤーに対する」当たり判定の半径
     public float hitboxOfCat = 1.0f;
     // 攻撃範囲
-    public float range = 4f;
+    public float range = 5f;
     // （初期値0からの）攻撃間隔
-    public int span = 60;
+    public int span = 150;
     // （初期値0からの）攻撃判定発生フレーム
-    public int startFrame = 59;
+    public int startFrame = 50;
     // （初期値0からの）攻撃判定消滅フレーム
-    public int endFrame = 60;
+    public int endFrame = 150;
 
     // フレームカウント
     int frameCount = 0;
@@ -100,16 +100,5 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
-
-    // 食べ物を拾うことで減速
-    public void Decelerate(bool hasFood)
-    {
-        PlayerStatus playerStatus = this.player.GetComponent<PlayerStatus>();
-        if (hasFood)
-            playerStatus.speed = 0.7f;
-        else
-            playerStatus.speed = 1.0f;
-
     }
 }

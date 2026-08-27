@@ -1,20 +1,21 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class FoodSetting : MonoBehaviour
 {
+    // 食べ物の名前
+    
     // 食べ物の経験値
     public int exp = 20;
     // 食べ物の満腹度
     public int feed = 30;
     // 食べ物の「プレイヤーに対する」当たり判定の半径
     public float hitboxOfFoods = 1.0f;
+
     // 食べ物を持つ場所
-    public GameObject holdPoint;
+    Transform target;
     // 食べ物を持っているかどうか
-    public bool hasFood = false;
-    
+    bool hasFood = false;
 
     GameObject player;
     GameObject cat;
@@ -23,6 +24,10 @@ public class FoodSetting : MonoBehaviour
     {
         this.player = GameObject.FindGameObjectWithTag("Player");
         this.cat = GameObject.FindGameObjectWithTag("Cat");
+        if (target == null && player != null)
+        {
+            target = player.transform;
+        }
     }
 
     void Update()
@@ -57,26 +62,33 @@ public class FoodSetting : MonoBehaviour
             }
         }
 
-        this.player.GetComponent<PlayerController>().Decelerate(hasFood);
+        if (hasFood)
+        {
+            transform.position = this.target.transform.position;
+        }
+
+        if (target == null)
+        {
+            return;
+        }
     }
 
     void PickUpFood()
     {
         hasFood = true;
-        transform.SetParent(holdPoint.transform);
-        transform.localPosition = Vector3.zero;
+        this.player.GetComponent<PlayerStatus>().speed = 0.7f;
+        GameObject generator = GameObject.Find("FoodGenerator");
+        generator.GetComponent<FoodGenerator>().foodCount--;
         Debug.Log(gameObject.name + "を拾った");
     }
 
     void GiveFoodToCat()
     {
         hasFood = false;
-        transform.SetParent(null);
+        this.player.GetComponent<PlayerStatus>().speed = 1f;
         Debug.Log("猫に" + gameObject.name + "をあげた");
         this.player.GetComponent<PlayerLevel>().AddExperience(exp);
         this.cat.GetComponent<CatHunger>().Feed(feed);
         Destroy(gameObject);
     }
-   
-   
 }

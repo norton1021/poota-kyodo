@@ -5,9 +5,9 @@ public class EnemyGenerator : MonoBehaviour
     // 生成する敵
     public GameObject[] enemyPrefab = new GameObject[5];
     // 生成のクールタイム
-    public int span = 60;
+    public int span = 2;
     // 生成数の上限
-    public int limit = 20;
+    public int limit = 500;
     // 生成数のカウント
     public int enemyCount = 0;
 
@@ -16,17 +16,47 @@ public class EnemyGenerator : MonoBehaviour
 
     void Update()
     {
-        frameCount++;
+        if (enemyCount < limit)
+        {
+            frameCount++;
+        }
+        else
+        {
+            frameCount = 0;
+        }
+        
         if (frameCount >= span)
         {
             frameCount = 0;
             if (enemyCount < limit)
             {
                 enemyCount++;
-                GameObject go = Instantiate(enemyPrefab[0]);
-                int px = Random.Range(-6, 7);
-                go.transform.position = new Vector3(px, 7, 0);
+                Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
+                enemyPosition.z = 0;
+                Instantiate(enemyPrefab[0], enemyPosition, transform.rotation);
             }    
+        }
+    }
+
+    Vector3 InstantiatePosition()
+    {
+        // 画面の上下左右どこから生成するかを決める変数
+        int select = Random.Range(0, 4);
+        // 上下左右の画面幅のどのあたりから生成するかを決める変数
+        float random = Random.Range(-0.75f, 0.75f);
+        // プレイヤーからの離れ具合を決める変数
+        float randomWidth = Random.Range(0.75f, 1f);
+
+        switch (select)
+        {
+            case 0:
+                return new Vector3(random, randomWidth, 0);
+            case 1:
+                return new Vector3(random, -randomWidth, 0);
+            case 2:
+                return new Vector3(randomWidth, random, 0);
+            default:
+                return new Vector3(-randomWidth, random, 0);
         }
     }
 }
