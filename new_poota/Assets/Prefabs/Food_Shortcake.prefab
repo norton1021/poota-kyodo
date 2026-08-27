@@ -108,7 +108,6 @@ MonoBehaviour:
   exp: 20
   feed: 30
   hitboxOfFoods: 1
-<<<<<<< HEAD
   holdPoint: {fileID: 0}
   hasFood: 0
 --- !u!114 &4532452977740030166
@@ -125,5 +124,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodGenerator
   Span: 600
   foodprefab: {fileID: 4901267195803235853}
-=======
->>>>>>> a220c8820f2a22c3bda82aa0db5cd3c94453b412
