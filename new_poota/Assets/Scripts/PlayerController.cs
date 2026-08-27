@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public int startFrame = 50;
     // （初期値0からの）攻撃判定消滅フレーム
     public int endFrame = 150;
+    // 操作の可否
+    public bool control = true;
 
     // フレームカウント
     int frameCount = 0;
@@ -31,55 +33,58 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        PlayerStatus playerStatus = this.player.GetComponent<PlayerStatus>();
-
-        // Aキーで左に移動
-        if (Keyboard.current.aKey.isPressed)
+        if (control)
         {
-            transform.Translate(-0.1f * playerStatus.speed, 0, 0);
-        }
+            PlayerStatus playerStatus = this.player.GetComponent<PlayerStatus>();
+
+            // Aキーで左に移動
+            if (Keyboard.current.aKey.isPressed)
+            {
+                transform.Translate(-0.1f * playerStatus.speed, 0, 0);
+            }
 
 
-        // Dキーで右に移動
-        if (Keyboard.current.dKey.isPressed)
-        {
-            transform.Translate(0.1f * playerStatus.speed, 0, 0);
-        }
+            // Dキーで右に移動
+            if (Keyboard.current.dKey.isPressed)
+            {
+                transform.Translate(0.1f * playerStatus.speed, 0, 0);
+            }
 
-        // Wキーで上に移動
-        if (Keyboard.current.wKey.isPressed)
-        {
-            transform.Translate(0, 0.1f * playerStatus.speed, 0);
-        }
+            // Wキーで上に移動
+            if (Keyboard.current.wKey.isPressed)
+            {
+                transform.Translate(0, 0.1f * playerStatus.speed, 0);
+            }
 
-        // Sキーで下に移動
-        if (Keyboard.current.sKey.isPressed)
-        {
-            transform.Translate(0, -0.1f * playerStatus.speed, 0);
-        }
+            // Sキーで下に移動
+            if (Keyboard.current.sKey.isPressed)
+            {
+                transform.Translate(0, -0.1f * playerStatus.speed, 0);
+            }
 
-        frameCount++;
+            frameCount++;
 
-        if (frameCount >= startFrame)
-        {
-            isActive = true;
-            GetComponent<CircleRenderer>().line.enabled = true;
-        }
+            if (frameCount >= startFrame)
+            {
+                isActive = true;
+                GetComponent<CircleRenderer>().line.enabled = true;
+            }
 
-        if (frameCount >= endFrame)
-        {
-            isActive = false;
-            GetComponent<CircleRenderer>().line.enabled = false;
-        }
+            if (frameCount >= endFrame)
+            {
+                isActive = false;
+                GetComponent<CircleRenderer>().line.enabled = false;
+            }
 
-        if (isActive)
-        {
-            PlayerNormalAttack(range, playerStatus.power);
-        }
+            if (isActive)
+            {
+                PlayerNormalAttack(range, playerStatus.power);
+            }
 
-        if (frameCount >= span)
-        {
-            frameCount = 0;
+            if (frameCount >= span)
+            {
+                frameCount = 0;
+            }
         }
     }
 
