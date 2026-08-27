@@ -6,6 +6,7 @@ public class PlayerLevel : MonoBehaviour
     public int experience = 0;
     public int experienceToNextLevel = 100;
     GameObject director;
+    public SkillManeger skillManeger;
 
     public void AddExperience(int amount)
     {
@@ -22,5 +23,6 @@ public class PlayerLevel : MonoBehaviour
         level++;
         experienceToNextLevel += 50;
         Debug.Log("レベルアップ Lv." + level);
+        skillManeger.ShowSkillChoice();
     }
 }
