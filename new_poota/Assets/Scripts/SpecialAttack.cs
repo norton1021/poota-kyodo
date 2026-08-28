@@ -7,7 +7,7 @@ public class SpecialAttack : MonoBehaviour
     public GameObject specialCutIn;
     public Slider specialGauge;
     public float maxGauge = 100f;
-    public float damage = 100f;
+    public int damage = 100;
     private bool canUse = false;
     private bool isPlaying = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,7 +51,7 @@ public class SpecialAttack : MonoBehaviour
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemys)
         {
-            enemy.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            enemy.SendMessage("Damage", damage, SendMessageOptions.DontRequireReceiver);
         }
         specialCutIn.SetActive(false);
         isPlaying = false;
