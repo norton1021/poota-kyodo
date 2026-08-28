@@ -2,18 +2,43 @@ using UnityEngine;
 
 public class Skill_UnCoCannon : MonoBehaviour
 {
-    Vector3 rotation = new Vector3(0, 0, 45);
+    int rotation = 0;
     GameObject player;
 
     void Start()
     {
-        rotation *= Time.deltaTime;
-        transform.Rotate(rotation);
+        this.rotation = (int)Time.deltaTime % 8;
     }
 
     void Update()
     {
         this.player = GameObject.FindGameObjectWithTag("Player");
-        transform.position += rotation;
+        switch (this.rotation)
+        {
+            case 0:
+                transform.Translate(1, 0, 0);
+                break;
+            case 1:
+                transform.Translate(1, 1, 0);
+                break;
+            case 2:
+                transform.Translate(0, 1, 0);
+                break;
+            case 3:
+                transform.Translate(-1, 1, 0);
+                break;
+            case 4:
+                transform.Translate(-1, 0, 0);
+                break;
+            case 5:
+                transform.Translate(-1, -1, 0);
+                break;
+            case 6:
+                transform.Translate(0, -1, 0);
+                break;
+            case 7:
+                transform.Translate(1, -1, 0);
+                break;
+        }
     }
 }
