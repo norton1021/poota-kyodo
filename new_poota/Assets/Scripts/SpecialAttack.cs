@@ -10,12 +10,16 @@ public class SpecialAttack : MonoBehaviour
     public int damage = 100;
     private bool canUse = false;
     private bool isPlaying = false;
+    public GameObject specialNotReady;
+    public GameObject specialReady;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         specialCutIn.SetActive(false);
         specialGauge.maxValue = maxGauge;
         specialGauge.value = 0;
+        specialNotReady.SetActive(true);
+        specialReady.SetActive(false);
     }
 
     // Update is called once per frame
@@ -33,6 +37,8 @@ public class SpecialAttack : MonoBehaviour
         {
             specialGauge.value = maxGauge;
             canUse = true;
+            specialNotReady.SetActive(false);
+            specialReady.SetActive(true);
         }
     }
     void UseSpecial()
@@ -46,6 +52,8 @@ public class SpecialAttack : MonoBehaviour
         isPlaying = true;
         canUse = false;
         specialGauge.value = 0;
+        specialNotReady.SetActive(true);
+        specialReady.SetActive(false);
         specialCutIn.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
