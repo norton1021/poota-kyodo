@@ -870,6 +870,7 @@ GameObject:
   - component: {fileID: 257447913}
   - component: {fileID: 257447924}
   - component: {fileID: 257447915}
+  - component: {fileID: 257447925}
   - component: {fileID: 257447921}
   - component: {fileID: 257447918}
   - component: {fileID: 257447917}
@@ -974,7 +975,6 @@ MonoBehaviour:
   startFrame: 50
   endFrame: 150
   control: 1
-  uncoCannonPrefab: {fileID: 7875831900578304524, guid: 057f65af121ab5e4da83b71dd75c0a98, type: 3}
   frameCount: 0
 --- !u!61 &257447917
 BoxCollider2D:
@@ -1095,6 +1095,23 @@ MonoBehaviour:
   speed: 1
   invincibleTime: 10
   currentHP: 100
+--- !u!114 &257447925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257447912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef0b1fe7c31cf34d8318ddb33ef73d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UncoCannonManager
+  span: 240
+  startFrame: 0
+  endFrame: 180
+  control: 0
+  uncoCannonPrefab: {fileID: 7875831900578304524, guid: 057f65af121ab5e4da83b71dd75c0a98, type: 3}
 --- !u!1 &262130241
 GameObject:
   m_ObjectHideFlags: 0

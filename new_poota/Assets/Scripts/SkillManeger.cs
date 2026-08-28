@@ -24,13 +24,15 @@ public class SkillManeger : MonoBehaviour
     {
         Debug.Log("スキル選択開始");
         skillPanel.SetActive(true);
-        skillText1.text = "臭い";
+        skillText1.text = "UncoCannon";
         skillText2.text = "回復";
         skillText3.text = "攻撃";
         Time.timeScale = 0f;
     }
     public void SelectSkill1()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<UncoCannonManager>().control = true;
         CloseSkillPanenl();
     }
     public void SelectSkill2()

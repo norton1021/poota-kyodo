@@ -1,21 +1,37 @@
 using UnityEngine;
 
-public class Skill_UnCoCannon : MonoBehaviour
+public class UncoCannon : MonoBehaviour
 {
+    // UŒ‚”{—¦
+    public float atkMag = 1.5f;
     // ’e‘¬
     public float speed = 0.3f;
+    
+    // Šp“x‚ğŒˆ‚ß‚é‚½‚ß‚Ì•Ï”
     int rotation = 0;
+
+    // “–‚½‚è”»’èAUŒ‚—Í‚ÌQÆ—p‚Ì•Ï”
     GameObject player;
+    Collider2D playerCollider;
+    Collider2D bulletCollider;
+
 
     void Start()
     {
         this.player = GameObject.FindGameObjectWithTag("Player");
-        transform.position = player.transform.position;
-        rotation = player.GetComponent<PlayerController>().frameCount % 8;
+        transform.position = this.player.transform.position;
+        this.rotation = this.player.GetComponent<PlayerController>().frameCount % 8;
+        this.playerCollider = this.player.GetComponent<Collider2D>();
+        this.bulletCollider = GetComponent<Collider2D>();
+        if (this.bulletCollider != null && this.playerCollider != null)
+        {
+            Physics2D.IgnoreCollision(this.bulletCollider, this.playerCollider);
+        }
     }
 
     void Update()
     {
+        // 8•ûŒü‚ÉËo
         switch (this.rotation)
         {
             case 0:
@@ -44,6 +60,7 @@ public class Skill_UnCoCannon : MonoBehaviour
                 break;
         }
 
+        // ‰æ–ÊŠO‚Éo‚é‚ÆÁ–Å
         if (transform.position.x > Camera.main.ViewportToWorldPoint(new Vector3(1.25f, 0.5f, Camera.main.nearClipPlane)).x ||
             transform.position.x < Camera.main.ViewportToWorldPoint(new Vector3(-0.25f, 0.5f, Camera.main.nearClipPlane)).x ||
             transform.position.y > Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.25f, Camera.main.nearClipPlane)).y ||
@@ -54,15 +71,14 @@ public class Skill_UnCoCannon : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    {   
+    {
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("a");
-            this.player = GameObject.FindGameObjectWithTag("Player");
+            GameObject playerStatus = GameObject.FindGameObjectWithTag("Player");
             EnemyStatus enemyStatus = collision.GetComponent<EnemyStatus>();
             if (enemyStatus != null)
             {
-                enemyStatus.EnemyDecreaceHp(this.player.GetComponent<PlayerStatus>().power);
+                enemyStatus.EnemyDecreaceHp((int)(playerStatus.GetComponent<PlayerStatus>().power * atkMag));
                 Destroy(gameObject);
             }
         }
