@@ -70,16 +70,15 @@ public class EnemyStatus : MonoBehaviour
             currentHP -= damage;
             UpdateHpUI();
             if (currentHP <= 0)
-            { 
+            {
+                GameObject.Find("SpecialAttackManeger").GetComponent<SpecialAttack>().AddGauge(1);
                 Defeat();
-                FindFirstObjectByType<SpecialAttack>().AddGauge(1);
             }
         }
     }
     public void Defeat()
     {
-        GameObject generator = GameObject.Find("EnemyGenerator");
-        generator.GetComponent<EnemyGenerator>().enemyCount--;
+        GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>().enemyCount--;
         Destroy(gameObject);
     }
 

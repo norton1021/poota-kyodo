@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8396329814499480917}
   - component: {fileID: 1315568470257749238}
   - component: {fileID: -7497426403117731330}
+  - component: {fileID: -8829437120523069935}
   m_Layer: 0
-  m_Name: "unk\u30AD\u30E3\u30CE\u30F3_0"
+  m_Name: Skill_UncoCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e308f1a232f5af2499dff27cbc6203b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skill_UnCoCannon
+  atkMag: 1.5
   speed: 0.3
 --- !u!58 &-7497426403117731330
 CircleCollider2D:
@@ -142,3 +144,30 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2.5
+--- !u!50 &-8829437120523069935
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7875831900578304524}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
