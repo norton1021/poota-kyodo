@@ -18,8 +18,6 @@ public class EnemyStatus : MonoBehaviour
     // ゲームプレイ中の体力
     public int currentHP = 100;
     public SpecialAttack specialAttack;
-    public GameObject specialCutIn;
-    public Slider specialGauge;
     // 無敵かどうか
     bool invincible = false;
     // フレームカウント
@@ -72,8 +70,9 @@ public class EnemyStatus : MonoBehaviour
             currentHP -= damage;
             UpdateHpUI();
             if (currentHP <= 0)
-            {
+            { 
                 Defeat();
+                FindFirstObjectByType<SpecialAttack>().AddGauge(1);
             }
         }
     }
@@ -82,7 +81,6 @@ public class EnemyStatus : MonoBehaviour
         GameObject generator = GameObject.Find("EnemyGenerator");
         generator.GetComponent<EnemyGenerator>().enemyCount--;
         Destroy(gameObject);
-        specialAttack.AddGauge(1);
     }
 
     void UpdateHpUI()

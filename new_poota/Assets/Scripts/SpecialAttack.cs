@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 public class SpecialAttack : MonoBehaviour
 {
     public GameObject specialCutIn;
@@ -20,7 +21,7 @@ public class SpecialAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Keyboard.current!=null&&Keyboard.current.qKey.wasPressedThisFrame)
         {
             UseSpecial();
         }
