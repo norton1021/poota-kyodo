@@ -17,9 +17,11 @@ public class PlayerController : MonoBehaviour
     public int endFrame = 150;
     // 操作の可否
     public bool control = true;
+    // Un-Coキャノン
+    public GameObject uncoCannonPrefab;
 
     // フレームカウント
-    int frameCount = 0;
+    public int frameCount = 0;
     // 攻撃判定の有無
     bool isActive = false;
     // プレイヤーのステータス
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
             if (isActive)
             {
                 PlayerNormalAttack(range, playerStatus.power);
+                Instantiate(uncoCannonPrefab);
             }
 
             if (frameCount >= span)

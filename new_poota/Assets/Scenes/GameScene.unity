@@ -974,6 +974,8 @@ MonoBehaviour:
   startFrame: 50
   endFrame: 150
   control: 1
+  uncoCannonPrefab: {fileID: 7875831900578304524, guid: 057f65af121ab5e4da83b71dd75c0a98, type: 3}
+  frameCount: 0
 --- !u!61 &257447917
 BoxCollider2D:
   m_ObjectHideFlags: 0
