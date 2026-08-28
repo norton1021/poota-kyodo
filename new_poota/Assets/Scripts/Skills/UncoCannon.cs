@@ -10,23 +10,14 @@ public class UncoCannon : MonoBehaviour
     // 角度を決めるための変数
     int rotation = 0;
 
-    // 当たり判定、攻撃力の参照用の変数
+    // プレイヤーのステータス参照用の変数
     GameObject player;
-    Collider2D playerCollider;
-    Collider2D bulletCollider;
-
 
     void Start()
     {
         this.player = GameObject.FindGameObjectWithTag("Player");
         transform.position = this.player.transform.position;
         this.rotation = this.player.GetComponent<PlayerController>().frameCount % 8;
-        this.playerCollider = this.player.GetComponent<Collider2D>();
-        this.bulletCollider = GetComponent<Collider2D>();
-        if (this.bulletCollider != null && this.playerCollider != null)
-        {
-            Physics2D.IgnoreCollision(this.bulletCollider, this.playerCollider);
-        }
     }
 
     void Update()
