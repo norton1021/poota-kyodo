@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: ccdedbb1bbfe05442ba4ce0e2b21af88
+guid: 38d4b9755ece7ec458487d7e9071c84d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1642858016327236831
-    second: pootahissatu_0
+      213: 1900029260466268048
+    second: 35_20260821162557_0
   - first:
-      213: -3068680624123619006
-    second: pootahissatu_1
+      213: 855197728581117737
+    second: 35_20260821162557_1
   - first:
-      213: 2680195626897490387
-    second: pootahissatu_2
+      213: -310189646312663436
+    second: 35_20260821162557_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pootahissatu_0
+      name: 35_20260821162557_0
       rect:
         serializedVersion: 2
         x: 1427
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1238960a6556339e0800000000000000
-      internalID: -1642858016327236831
+      spriteID: 097a0fcab824e5a10800000000000000
+      internalID: 1900029260466268048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pootahissatu_1
+      name: 35_20260821162557_1
       rect:
         serializedVersion: 2
         x: 1309
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 249dcfd1b3bd965d0800000000000000
-      internalID: -3068680624123619006
+      spriteID: 9276cc89dc54edb00800000000000000
+      internalID: 855197728581117737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pootahissatu_2
+      name: 35_20260821162557_2
       rect:
         serializedVersion: 2
         x: 454
@@ -165,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d1c7cde8b7f13520800000000000000
-      internalID: 2680195626897490387
+      spriteID: 476978ef82cf1bbf0800000000000000
+      internalID: -310189646312663436
       vertices: []
       indices: 
       edges: []
@@ -185,9 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pootahissatu_0: -1642858016327236831
-      pootahissatu_1: -3068680624123619006
-      pootahissatu_2: 2680195626897490387
+      35_20260821162557_0: 1900029260466268048
+      35_20260821162557_1: 855197728581117737
+      35_20260821162557_2: -310189646312663436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
