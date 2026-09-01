@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class TitleDirector : MonoBehaviour
+public class VideoGenerator : MonoBehaviour
 {
     void Update()
     {
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            SceneManager.LoadScene("StoryScene");
+            SceneManager.LoadScene("GameScene");
         }
     }
 }
