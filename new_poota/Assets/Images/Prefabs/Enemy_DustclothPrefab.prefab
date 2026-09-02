@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 2393079397310790048}
   - component: {fileID: 5454192972888659066}
   m_Layer: 0
-  m_Name: Enemy_BroomPrefab
+  m_Name: Enemy_DustclothPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -575,7 +575,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7901622571200134146, guid: 1513e90f6de5f5b4aabf48d913e9cd68, type: 3}
+  m_Sprite: {fileID: 4780767298224128879, guid: ee0de1754a25c4e4fb98cf5cb2ebe549, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -655,11 +655,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
+    oldSize: {x: 4.61, y: 3.09}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 5, y: 3}
   m_EdgeRadius: 0
