@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d43661166c5b58459926c497e6c7179
+guid: 52fa9d6405c1c7f4998e4c0fea2db33a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -944611766401992830
-    second: "\u30D7\u30FC\u592A\u30DE\u30C3\u30D7_0"
+      213: -7812676833806715480
+    second: poota_map_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u30D7\u30FC\u592A\u30DE\u30C3\u30D7_0"
+      name: poota_map_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 1280
+        width: 2000
+        height: 2000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28774fc6a9014e2f0800000000000000
-      internalID: -944611766401992830
+      spriteID: 8a5f60020dbc39390800000000000000
+      internalID: -7812676833806715480
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u30D7\u30FC\u592A\u30DE\u30C3\u30D7_0": -944611766401992830
+      poota_map_0: -7812676833806715480
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
