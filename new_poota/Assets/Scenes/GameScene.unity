@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyGenerator
   enemyPrefab:
   - {fileID: 6107927940729966297, guid: 4ab73ff6d4ca77c4aa833b54b2cf4a1b, type: 3}
-  - {fileID: 0}
+  - {fileID: 6107927940729966297, guid: c1137ccad570163489d548a461c5fe69, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
