@@ -13,6 +13,8 @@ public class EnemyGenerator : MonoBehaviour
 
     // フレームカウント
     int frameCount = 0;
+    // モンスターID
+    int monsterId = 0;
 
     void Update()
     {
@@ -33,7 +35,8 @@ public class EnemyGenerator : MonoBehaviour
                 enemyCount++;
                 Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
                 enemyPosition.z = 0;
-                Instantiate(enemyPrefab[0], enemyPosition, transform.rotation);
+                monsterId = Random.Range(0, 2);
+                Instantiate(enemyPrefab[monsterId], enemyPosition, transform.rotation);
             }    
         }
     }
