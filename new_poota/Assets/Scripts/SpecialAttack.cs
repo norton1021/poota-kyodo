@@ -6,7 +6,7 @@ public class SpecialAttack : MonoBehaviour
 {
     public GameObject specialCutIn;
     public Slider specialGauge;
-    public float maxGauge = 100f;
+    public float maxGauge = 2000f;
     public int damage = 100;
     private bool canUse = false;
     private bool isPlaying = false;

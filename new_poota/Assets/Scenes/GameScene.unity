@@ -5357,7 +5357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAttack
   specialCutIn: {fileID: 1523805823}
   specialGauge: {fileID: 932515061}
-  maxGauge: 100
+  maxGauge: 500
   damage: 100
   specialNotReady: {fileID: 1990478235}
   specialReady: {fileID: 23943918}
