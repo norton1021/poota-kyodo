@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CatHunger : MonoBehaviour
@@ -48,7 +49,11 @@ public class CatHunger : MonoBehaviour
                 hungerBubble.SetActive(false);
             }
         }
-    }
+        if (currentHunger == 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        }
 
     public void Feed(float amount)
     {
