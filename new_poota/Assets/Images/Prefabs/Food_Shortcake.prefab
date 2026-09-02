@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3595029862693756029, guid: 65b30b2b96e7cf24e8a9f1e648747ce4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,3 +107,4 @@ MonoBehaviour:
   exp: 20
   feed: 30
   hitboxOfFoods: 1
+  position: {x: -1, y: 0.75, z: 0}

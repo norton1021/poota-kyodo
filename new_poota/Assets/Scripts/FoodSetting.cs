@@ -11,8 +11,10 @@ public class FoodSetting : MonoBehaviour
     public int feed = 30;
     // 食べ物の「プレイヤーに対する」当たり判定の半径
     public float hitboxOfFoods = 1.0f;
-
     // 食べ物を持つ場所
+    public Vector3 position = new Vector3(-1, 0.75f, 0);
+
+    // 食べ物を持つ対象
     Transform target;
     // 食べ物を持っているかどうか
     bool hasFood = false;
@@ -64,7 +66,7 @@ public class FoodSetting : MonoBehaviour
 
         if (hasFood)
         {
-            transform.position = this.target.transform.position;
+            transform.position = this.target.transform.position + position;
         }
 
         if (target == null)
