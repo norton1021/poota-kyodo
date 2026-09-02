@@ -35,7 +35,7 @@ public class EnemyGenerator : MonoBehaviour
                 enemyCount++;
                 Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
                 enemyPosition.z = 0;
-                monsterId = Random.Range(0, 2);
+                monsterId = Random.Range(0, 5);
                 Instantiate(enemyPrefab[monsterId], enemyPosition, transform.rotation);
             }    
         }
