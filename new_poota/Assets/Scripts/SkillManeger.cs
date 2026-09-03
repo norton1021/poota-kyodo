@@ -32,7 +32,7 @@ public class SkillManeger : MonoBehaviour
     public void SelectSkill1()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<UncoCannonManager>().control = true;
+        player.GetComponent<UncoCannonManager>().able = true;
         CloseSkillPanenl();
     }
     public void SelectSkill2()

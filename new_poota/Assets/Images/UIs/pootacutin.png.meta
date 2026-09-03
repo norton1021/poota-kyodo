@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 38d4b9755ece7ec458487d7e9071c84d
+guid: ef9676f1758fb1e4a85d24272ec5cadd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1900029260466268048
-    second: 35_20260821162557_0
-  - first:
-      213: 855197728581117737
-    second: 35_20260821162557_1
-  - first:
-      213: -310189646312663436
-    second: 35_20260821162557_2
+      213: 1441111169197283431
+    second: pootacutin_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 35_20260821162557_0
+      name: pootacutin_0
       rect:
         serializedVersion: 2
-        x: 1427
-        y: 1396
-        width: 26
-        height: 29
+        x: 0
+        y: 0
+        width: 2160
+        height: 1620
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 097a0fcab824e5a10800000000000000
-      internalID: 1900029260466268048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 35_20260821162557_1
-      rect:
-        serializedVersion: 2
-        x: 1309
-        y: 1327
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9276cc89dc54edb00800000000000000
-      internalID: 855197728581117737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 35_20260821162557_2
-      rect:
-        serializedVersion: 2
-        x: 454
-        y: 61
-        width: 1381
-        height: 1245
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 476978ef82cf1bbf0800000000000000
-      internalID: -310189646312663436
+      spriteID: 7681ad919fadff310800000000000000
+      internalID: 1441111169197283431
       vertices: []
       indices: 
       edges: []
@@ -185,9 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      35_20260821162557_0: 1900029260466268048
-      35_20260821162557_1: 855197728581117737
-      35_20260821162557_2: -310189646312663436
+      pootacutin_0: 1441111169197283431
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

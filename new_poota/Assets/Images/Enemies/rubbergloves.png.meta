@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6394cb66f925dac4584b55148a8b5341
+guid: afa98b0c5f3396b44ba8073abaf6fd4f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7521216937020492681
-    second: 35_20260821163239 1_0
+      213: 6962104688421045645
+    second: rubbergloves_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 35_20260821163239 1_0
+      name: rubbergloves_0
       rect:
         serializedVersion: 2
-        x: 458
-        y: 223
-        width: 1377
-        height: 1083
+        x: 0
+        y: 0
+        width: 687
+        height: 648
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 774fd3e7b054f9790800000000000000
-      internalID: -7521216937020492681
+      spriteID: d850b6ac35d5e9060800000000000000
+      internalID: 6962104688421045645
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      35_20260821163239 1_0: -7521216937020492681
+      rubbergloves_0: 6962104688421045645
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 2393079397310790048}
   - component: {fileID: 5454192972888659066}
   m_Layer: 3
-  m_Name: Enemy_VacuumcleanerPrefab
+  m_Name: 04_broom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 6107927940729966297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9, y: 1.3149652, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -538,9 +538,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02d687b3d0ad624fb292e0b0577097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
-  maxHP: 100
-  power: 10
-  speed: 1.5
+  maxHP: 140
+  power: 12
+  speed: 1.75
   invincibleTime: 5
   enemyHpSlider: {fileID: 8737374018035705844}
   uiOffset: {x: 0, y: 1, z: 0}
@@ -595,7 +595,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6513663516294976059, guid: 756d4a27a64a5d540b956770f97c6d71, type: 3}
+  m_Sprite: {fileID: 7901622571200134146, guid: 6fc6ea5dc0ab73c43afe18e77bd1c3d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -655,11 +655,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.25, y: 6.75}
+    oldSize: {x: 4.05, y: 7.54}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 7, y: 7}
+  m_Size: {x: 4, y: 7.5}
   m_EdgeRadius: 0
