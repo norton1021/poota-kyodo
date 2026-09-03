@@ -17,9 +17,11 @@ public class PlayerController : MonoBehaviour
     public int endFrame = 150;
     // 操作の可否
     public bool control = true;
-    
     // フレームカウント
     public int frameCount = 0;
+    // 食べ物を持っているかどうか
+    public bool hasFood = false;
+
     // 攻撃判定の有無
     bool isActive = false;
     // プレイヤーのステータス
