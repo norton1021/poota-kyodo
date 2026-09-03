@@ -587,7 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1e6da49ac551c43a0ee9e029a0e4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleDirector
-  isFade: 0
   FadeOutSeconds: 1
 --- !u!328 &1253359533
 VideoPlayer:
@@ -608,7 +607,7 @@ VideoPlayer:
   m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
-  m_TimeUpdateMode: 2
+  m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
   m_TargetAudioSources:
@@ -620,7 +619,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -767,7 +766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1e6da49ac551c43a0ee9e029a0e4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleDirector
-  isFade: 0
   FadeOutSeconds: 1
 --- !u!212 &1350619885
 SpriteRenderer:
