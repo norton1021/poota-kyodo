@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7497426403117731330}
   - component: {fileID: -8829437120523069935}
   m_Layer: 0
-  m_Name: Skill_UncoCannon
+  m_Name: uncocannonbulletPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

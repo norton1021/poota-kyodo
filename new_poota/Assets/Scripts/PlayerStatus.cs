@@ -46,6 +46,7 @@ public class PlayerStatus : MonoBehaviour
             currentHP -= damage;
             if (currentHP <= 0)
             {
+                currentHP = 0;
                 Debug.Log(gameObject.name + "は倒れた");
                 SceneManager.LoadScene("GameScene");
             }

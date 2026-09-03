@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 21077322d75fad34f98a3cbeb08dbbdb
+guid: d5f3e752711140648abfee1bb2dadda8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7443404284359788936
-    second: 35_20260821163239_0
+      213: 2590549669122458510
+    second: catarrow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 35_20260821163239_0
+      name: catarrow_0
       rect:
         serializedVersion: 2
-        x: 458
-        y: 223
-        width: 1377
-        height: 1083
+        x: 159
+        y: 446
+        width: 803
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8763d1f7d37b3b890800000000000000
-      internalID: -7443404284359788936
+      spriteID: e83cc01e23b73f320800000000000000
+      internalID: 2590549669122458510
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      35_20260821163239_0: -7443404284359788936
+      catarrow_0: 2590549669122458510
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2466240507601310456}
   - component: {fileID: 5257746128718317329}
   m_Layer: 0
-  m_Name: Food_Shortcake
+  m_Name: shortcakePrefab
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,39 +9,49 @@ public class UncoCannonManager : MonoBehaviour
     // （初期値0からの）攻撃判定消滅フレーム
     public int endFrame = 180;
     // 使用の可否
-    public bool control = false;
+    public bool able = false;
     // Un-Coキャノン
     public GameObject uncoCannonPrefab;
-    
+
     // フレームカウント
     int frameCount = 0;
     // 攻撃の有無
     bool isActive = false;
+    // プレイヤー
+    GameObject player;
+
+    void Start()
+    {
+        this.player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
-        if (control)
+        if (this.player.GetComponent<PlayerController>().control)
         {
-            frameCount++;
-
-            if (frameCount >= startFrame)
+            if (able)
             {
-                isActive = true;
-            }
+                frameCount++;
 
-            if (frameCount >= endFrame)
-            {
-                isActive = false;
-            }
+                if (frameCount >= startFrame)
+                {
+                    isActive = true;
+                }
 
-            if (isActive)
-            {
-                Instantiate(uncoCannonPrefab);
-            }
+                if (frameCount >= endFrame)
+                {
+                    isActive = false;
+                }
 
-            if (frameCount >= span)
-            {
-                frameCount = 0;
+                if (isActive)
+                {
+                    Instantiate(uncoCannonPrefab);
+                }
+
+                if (frameCount >= span)
+                {
+                    frameCount = 0;
+                }
             }
         }
     }

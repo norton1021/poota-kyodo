@@ -1,10 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
     // 生成する敵
-    public GameObject[] enemyPrefab = new GameObject[5];
+    public GameObject[] enemyPrefab = new GameObject[9];
     // 生成のクールタイム
     public int span = 2;
     // 生成数の上限
@@ -12,14 +13,25 @@ public class EnemyGenerator : MonoBehaviour
     // 生成数のカウント
     public int enemyCount = 0;
 
+    // プレイヤー
+    GameObject player;
     // フレームカウント
     int frameCount = 0;
     // モンスターID
     int monsterId = 0;
+    // プレイヤーのレベル帯
+    int level = 0;
     private bool canSpawn = true;
+
+    void Start()
+    {
+        this.player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
+        this.level = player.GetComponent<PlayerLevel>().level / 3;
+
         if (enemyCount < limit)
         {
             frameCount++;
@@ -37,7 +49,7 @@ public class EnemyGenerator : MonoBehaviour
                 enemyCount++;
                 Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
                 enemyPosition.z = 0;
-                monsterId = Random.Range(0, 5);
+                monsterId = Random.Range(this.level, this.level + 3);
                 Instantiate(enemyPrefab[monsterId], enemyPosition, transform.rotation);
             }    
         }
