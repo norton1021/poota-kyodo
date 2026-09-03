@@ -13,11 +13,11 @@ public class FoodSetting : MonoBehaviour
     public float hitboxOfFoods = 1.0f;
     // 食べ物を持つ場所
     public Vector3 position = new Vector3(-1, 0.75f, 0);
-
+    
     // 食べ物を持つ対象
     Transform target;
-    // 食べ物を持っているかどうか
-    bool hasFood = false;
+    // 食べ物を持つかどうか
+    bool has = false;
 
     GameObject player;
     GameObject cat;
@@ -46,9 +46,9 @@ public class FoodSetting : MonoBehaviour
         float r2 = hitboxOfFoods;
         float r3 = this.player.GetComponent<PlayerController>().hitboxOfCat;
 
-        if (Keyboard.current.eKey.isPressed)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if (!hasFood)
+            if (!this.player.GetComponent<PlayerController>().hasFood)
             {
                 if (d1 < r1 + r2)
                 {
@@ -64,7 +64,7 @@ public class FoodSetting : MonoBehaviour
             }
         }
 
-        if (hasFood)
+        if (has)
         {
             transform.position = this.target.transform.position + position;
         }
@@ -77,7 +77,8 @@ public class FoodSetting : MonoBehaviour
 
     void PickUpFood()
     {
-        hasFood = true;
+        this.player.GetComponent<PlayerController>().hasFood = true;
+        this.has = true;
         this.player.GetComponent<PlayerStatus>().speed = 0.7f;
         GameObject generator = GameObject.Find("FoodGenerator");
         generator.GetComponent<FoodGenerator>().foodCount--;
@@ -86,7 +87,8 @@ public class FoodSetting : MonoBehaviour
 
     void GiveFoodToCat()
     {
-        hasFood = false;
+        this.player.GetComponent<PlayerController>().hasFood = false;
+        this.has = false;
         this.player.GetComponent<PlayerStatus>().speed = 1f;
         Debug.Log("猫に" + gameObject.name + "をあげた");
         this.player.GetComponent<PlayerLevel>().AddExperience(exp);
