@@ -74,8 +74,8 @@ public class SpecialAttack : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
-        EnemyGenerator generator = FindObjectOfType<EnemyGenerator>();
-            if(generator!=null)
+        EnemyGenerator generator = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
+        if(generator!=null)
         {
             generator.StopSpawn(enemyStopTime);
         }
