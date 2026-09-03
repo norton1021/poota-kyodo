@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class TitleDirector : MonoBehaviour
 {
     AudioSource audioSource;
-    public bool isFade;
     public double FadeOutSeconds = 1.0;
     bool isFadeOut = false;
     double FadeDeltaTime = 0;
@@ -21,6 +20,7 @@ public class TitleDirector : MonoBehaviour
         {
             isFadeOut = true;
         }
+
         if (isFadeOut)
         {
             FadeDeltaTime += Time.deltaTime;
