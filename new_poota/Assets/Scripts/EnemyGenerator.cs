@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
@@ -15,6 +16,7 @@ public class EnemyGenerator : MonoBehaviour
     int frameCount = 0;
     // モンスターID
     int monsterId = 0;
+    private bool canSpawn = true;
 
     void Update()
     {
@@ -30,7 +32,7 @@ public class EnemyGenerator : MonoBehaviour
         if (frameCount >= span)
         {
             frameCount = 0;
-            if (enemyCount < limit)
+            if (enemyCount < limit&&canSpawn)
             {
                 enemyCount++;
                 Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
@@ -61,5 +63,15 @@ public class EnemyGenerator : MonoBehaviour
             default:
                 return new Vector3(-randomWidth, random, 0);
         }
+    }
+    public void StopSpawn(float time)
+    {
+        StartCoroutine(StopSpawnCoroutine(time));
+    }
+    private IEnumerator StopSpawnCoroutine(float time)
+    {
+        canSpawn = false;
+        yield return new WaitForSeconds(time);  
+        canSpawn = true;
     }
 }

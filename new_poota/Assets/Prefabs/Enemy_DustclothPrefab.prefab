@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4368209139514290434}
   - component: {fileID: 5373159201908128201}
   - component: {fileID: 2627820989372306921}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5228170476309540010}
   - component: {fileID: 7097447291522425713}
   - component: {fileID: 1620551744990715232}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4816712335617579751}
   - component: {fileID: 7732277906692281230}
   - component: {fileID: 7860411815359928513}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 5631487680197414722}
   - component: {fileID: 7363829997771846697}
   - component: {fileID: 6187504801928115955}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2228139383151016506}
   - component: {fileID: 8737374018035705844}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: EnemyHpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1267680250596396983}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4069673369334468300}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 6147068086419459053}
   - component: {fileID: 2393079397310790048}
   - component: {fileID: 5454192972888659066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy_DustclothPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}

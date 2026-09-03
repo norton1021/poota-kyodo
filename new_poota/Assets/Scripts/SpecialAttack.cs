@@ -12,6 +12,9 @@ public class SpecialAttack : MonoBehaviour
     private bool isPlaying = false;
     public GameObject specialNotReady;
     public GameObject specialReady;
+    public float attackRange = 10f;
+    public float enemyStopTime = 3f;
+    public LayerMask enemyLayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,5 +66,23 @@ public class SpecialAttack : MonoBehaviour
         }
         specialCutIn.SetActive(false);
         isPlaying = false;
+    }
+    public void UseSpecialAttack()
+    {
+        Collider2D[] enemies= Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
+        foreach (Collider2D enemy in enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+        EnemyGenerator generator = FindObjectOfType<EnemyGenerator>();
+            if(generator!=null)
+        {
+            generator.StopSpawn(enemyStopTime);
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

@@ -5384,6 +5384,11 @@ MonoBehaviour:
   damage: 100
   specialNotReady: {fileID: 1990478235}
   specialReady: {fileID: 23943918}
+  attackRange: 20
+  enemyStopTime: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!4 &2016056910
 Transform:
   m_ObjectHideFlags: 0
