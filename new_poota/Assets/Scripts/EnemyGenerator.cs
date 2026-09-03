@@ -12,15 +12,17 @@ public class EnemyGenerator : MonoBehaviour
     public int limit = 500;
     // 生成数のカウント
     public int enemyCount = 0;
+    // 同時に生成する敵の種類数
+    public int varieties = 3;
 
     // プレイヤー
     GameObject player;
     // フレームカウント
     int frameCount = 0;
-    // モンスターID
-    int monsterId = 0;
-    // プレイヤーのレベル帯
-    int level = 0;
+    // モンスターID最低
+    int minId = 0;
+    // モンスターID最大
+    int maxId = 0;
     private bool canSpawn = true;
 
     void Start()
@@ -30,7 +32,16 @@ public class EnemyGenerator : MonoBehaviour
 
     void Update()
     {
-        this.level = player.GetComponent<PlayerLevel>().level / 3;
+        if (this.minId + varieties < enemyPrefab.Length)
+        {
+            this.minId = player.GetComponent<PlayerLevel>().level / 3;
+            this.maxId = this.minId + varieties;
+        }
+        else
+        {
+            this.maxId = enemyPrefab.Length;
+            this.minId = enemyPrefab.Length - varieties;
+        }
 
         if (enemyCount < limit)
         {
@@ -49,8 +60,7 @@ public class EnemyGenerator : MonoBehaviour
                 enemyCount++;
                 Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
                 enemyPosition.z = 0;
-                monsterId = Random.Range(this.level, this.level + 3);
-                Instantiate(enemyPrefab[monsterId], enemyPosition, transform.rotation);
+                Instantiate(enemyPrefab[Random.Range(this.minId, this.maxId)], enemyPosition, transform.rotation);
             }    
         }
     }
