@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4b4157ac518bb3a4c97c7c11e950c2a6
+guid: 147bb0e52695da340a81e3730a04d360
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -704303970994349261
-    second: dustpan_0
+      213: -7832214784768987486
+    second: apple_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dustpan_0
+      name: apple_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 537
-        height: 547
+        x: 170
+        y: 125
+        width: 685
+        height: 758
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 33b1cfa154fc936f0800000000000000
-      internalID: -704303970994349261
+      spriteID: 2ae284d66226e4390800000000000000
+      internalID: -7832214784768987486
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dustpan_0: -704303970994349261
+      apple_0: -7832214784768987486
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
