@@ -7,15 +7,25 @@ public class SpecialAttack : MonoBehaviour
     public GameObject specialCutIn;
     public Slider specialGauge;
     public float maxGauge = 2000f;
-    public int damage = 100;
-    private bool canUse = false;
-    private bool isPlaying = false;
     public GameObject specialNotReady;
     public GameObject specialReady;
-    public float attackRange = 10f;
-    public float enemyStopTime = 3f;
-    public LayerMask enemyLayer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // スキルが使用可能かどうか
+    bool canUse = false;
+    // スキルが発動中かどうか
+    bool isPlaying = false;
+    // カットインを表示するかどうか
+    bool cutInIsPlaying = false;
+    // カットインの表示フレームカウント
+    int cutInFrameCount = 0;
+    // カットインの表示時間
+    int cutInStopTime = 90;
+
+    // スキル用_フレームカウント
+    int frameCount = 0;
+    // スキル用_生成停止時間
+    int stopTime = 180;
+
     void Start()
     {
         specialCutIn.SetActive(false);
@@ -25,14 +35,48 @@ public class SpecialAttack : MonoBehaviour
         specialReady.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current!=null&&Keyboard.current.qKey.wasPressedThisFrame)
+        // 発動時の効果
+        if (Keyboard.current != null && Keyboard.current.qKey.wasPressedThisFrame)
         {
-            UseSpecial();
+            if (canUse || !isPlaying)
+            {
+                // スキルとカットインの管理
+                canUse = false;
+                isPlaying = true;
+                cutInIsPlaying = true;
+                specialGauge.value = 0;
+                specialNotReady.SetActive(true);
+                specialReady.SetActive(false);
+                specialCutIn.SetActive(true);
+
+                // スキル「ストップジェネレーション」の発動時の効果
+                Special_StopGeneration_instant();
+            }
+        }
+
+        // 発動中の効果
+        if (isPlaying)
+        {
+            // スキル「ストップジェネレーション」の発動中の効果
+            Special_StopGeneration();
+        }
+
+        // カットインの処理
+        if (cutInIsPlaying)
+        {
+            cutInFrameCount++;
+
+            if (cutInFrameCount > cutInStopTime)
+            {
+                specialCutIn.SetActive(false);
+                cutInIsPlaying = false;
+                cutInFrameCount = 0;
+            }
         }
     }
+
     public void AddGauge(float amount)
     {
         specialGauge.value += amount;
@@ -44,45 +88,30 @@ public class SpecialAttack : MonoBehaviour
             specialReady.SetActive(true);
         }
     }
-    void UseSpecial()
+
+    void Special_StopGeneration_instant()
     {
-        if (!canUse) return;
-        if (isPlaying) return;
-        StartCoroutine(SpecialAttackCoroutine());
-    }
-    IEnumerator SpecialAttackCoroutine()
-    {
-        isPlaying = true;
-        canUse = false;
-        specialGauge.value = 0;
-        specialNotReady.SetActive(true);
-        specialReady.SetActive(false);
-        specialCutIn.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
-        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemys)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
         {
-            enemy.SendMessage("Damage", damage, SendMessageOptions.DontRequireReceiver);
-        }
-        specialCutIn.SetActive(false);
-        isPlaying = false;
-    }
-    public void UseSpecialAttack()
-    {
-        Collider2D[] enemies= Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
-        foreach (Collider2D enemy in enemies)
-        {
-            Destroy(enemy.gameObject);
-        }
-        EnemyGenerator generator = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
-        if(generator!=null)
-        {
-            generator.StopSpawn(enemyStopTime);
+            Destroy(enemy);
         }
     }
-    private void OnDrawGizmosSelected()
+
+    void Special_StopGeneration()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        EnemyGenerator generatorComponent = GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>();
+        generatorComponent.canGenerate = false;
+        generatorComponent.enemyCount = 0;
+
+        frameCount++;
+
+        if (frameCount >= stopTime)
+        {
+            generatorComponent.canGenerate = true;
+            isPlaying = false;
+            frameCount = 0;
+        }
     }
 }
