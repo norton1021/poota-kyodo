@@ -63,13 +63,22 @@ public class UncoCannon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject playerStatus = GameObject.FindGameObjectWithTag("Player");
         if (collision.CompareTag("Enemy"))
         {
-            GameObject playerStatus = GameObject.FindGameObjectWithTag("Player");
             EnemyStatus enemyStatus = collision.GetComponent<EnemyStatus>();
             if (enemyStatus != null)
             {
                 enemyStatus.EnemyDecreaceHp((int)(playerStatus.GetComponent<PlayerStatus>().power * atkMag));
+                Destroy(gameObject);
+            }
+        }
+        else if (collision.CompareTag("boss enemy"))
+        {
+            BossStatus bossStatus = collision.GetComponent<BossStatus>();
+            if (bossStatus != null)
+            {
+                bossStatus.EnemyDecreaceHp((int)(playerStatus.GetComponent<PlayerStatus>().power * atkMag));
                 Destroy(gameObject);
             }
         }

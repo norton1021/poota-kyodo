@@ -70,13 +70,12 @@ public class BossStatus : MonoBehaviour
         }
     }
 }
-public void Defeat()
-{
-    GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>().enemyCount--;
+    public void Defeat()
+    {
         if (areaBlock != null)
         {
             Destroy(areaBlock);
         }
         Destroy(gameObject);
-}
+    }
 }

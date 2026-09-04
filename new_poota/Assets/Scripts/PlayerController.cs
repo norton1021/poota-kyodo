@@ -106,6 +106,14 @@ public class PlayerController : MonoBehaviour
                     enemyStatus.EnemyDecreaceHp(power);
                 }
             }
+            else if (enemy.CompareTag("boss enemy"))
+            {
+                BossStatus bossStatus = enemy.GetComponent<BossStatus>();
+                if (bossStatus != null)
+                {
+                    bossStatus.EnemyDecreaceHp(power);
+                }
+            }
         }
     }
 }
