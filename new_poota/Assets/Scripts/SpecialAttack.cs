@@ -50,7 +50,7 @@ public class SpecialAttack : MonoBehaviour
                 specialNotReady.SetActive(true);
                 specialReady.SetActive(false);
                 specialCutIn.SetActive(true);
-
+                GetComponent<AudioSource>().Play();
                 // スキル「ストップジェネレーション」の発動時の効果
                 Special_StopGeneration_instant();
             }

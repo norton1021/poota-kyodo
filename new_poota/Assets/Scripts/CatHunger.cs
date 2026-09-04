@@ -59,6 +59,7 @@ public class CatHunger : MonoBehaviour
     {
         currentHunger += amount;
         currentHunger = Mathf.Clamp(currentHunger, 0, maxHunger);
+        GetComponent<AudioSource>().Play();
         if (hungerSlider != null)
         {
             hungerSlider.value = currentHunger;
