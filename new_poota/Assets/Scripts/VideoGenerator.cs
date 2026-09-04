@@ -9,6 +9,7 @@ public class VideoGenerator : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             SceneManager.LoadScene("GameScene");
+            GetComponent<AudioSource>().Play();
         }
     }
 }

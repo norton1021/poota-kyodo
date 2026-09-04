@@ -19,6 +19,7 @@ public class TitleDirector : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             isFadeOut = true;
+            GetComponent<AudioSource>().Play();
         }
 
         if (isFadeOut)
