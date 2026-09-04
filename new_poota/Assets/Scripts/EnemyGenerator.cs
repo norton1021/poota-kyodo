@@ -14,6 +14,8 @@ public class EnemyGenerator : MonoBehaviour
     public int enemyCount = 0;
     // 同時に生成する敵の種類数
     public int varieties = 3;
+    // 生成可能かどうか
+    public bool canGenerate = true;
 
     // プレイヤー
     GameObject player;
@@ -28,6 +30,10 @@ public class EnemyGenerator : MonoBehaviour
     void Start()
     {
         this.player = GameObject.FindGameObjectWithTag("Player");
+        if (this.varieties > enemyPrefab.Length)
+        {
+            this.varieties = enemyPrefab.Length;
+        }
     }
 
     void Update()
@@ -39,29 +45,32 @@ public class EnemyGenerator : MonoBehaviour
         }
         else
         {
-            this.maxId = enemyPrefab.Length;
             this.minId = enemyPrefab.Length - varieties;
+            this.maxId = enemyPrefab.Length;
         }
 
-        if (enemyCount < limit)
+        if (canGenerate)
         {
-            frameCount++;
-        }
-        else
-        {
-            frameCount = 0;
-        }
-        
-        if (frameCount >= span)
-        {
-            frameCount = 0;
-            if (enemyCount < limit&&canSpawn)
+            if (enemyCount < limit)
             {
-                enemyCount++;
-                Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
-                enemyPosition.z = 0;
-                Instantiate(enemyPrefab[Random.Range(this.minId, this.maxId)], enemyPosition, transform.rotation);
-            }    
+                frameCount++;
+            }
+            else
+            {
+                frameCount = 0;
+            }
+
+            if (frameCount >= span)
+            {
+                frameCount = 0;
+                if (enemyCount < limit && canSpawn)
+                {
+                    enemyCount++;
+                    Vector3 enemyPosition = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane) + InstantiatePosition());
+                    enemyPosition.z = 0;
+                    Instantiate(enemyPrefab[Random.Range(this.minId, this.maxId)], enemyPosition, transform.rotation);
+                }
+            }
         }
     }
 
