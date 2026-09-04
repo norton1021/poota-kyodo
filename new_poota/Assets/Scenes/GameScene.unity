@@ -1358,7 +1358,7 @@ MonoBehaviour:
   span: 240
   startFrame: 0
   endFrame: 180
-  control: 0
+  able: 0
   uncoCannonPrefab: {fileID: 7875831900578304524, guid: 057f65af121ab5e4da83b71dd75c0a98, type: 3}
 --- !u!1 &262130241
 GameObject:
@@ -2493,6 +2493,8 @@ MonoBehaviour:
   span: 2
   limit: 500
   enemyCount: 0
+  varieties: 3
+  canGenerate: 1
 --- !u!4 &828103991
 Transform:
   m_ObjectHideFlags: 0
@@ -5415,14 +5417,8 @@ MonoBehaviour:
   specialCutIn: {fileID: 1523805823}
   specialGauge: {fileID: 932515061}
   maxGauge: 500
-  damage: 100
   specialNotReady: {fileID: 1990478235}
   specialReady: {fileID: 23943918}
-  attackRange: 20
-  enemyStopTime: 3
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!4 &2016056910
 Transform:
   m_ObjectHideFlags: 0
@@ -5495,7 +5491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I'm hungry
+  m_text: Cat is hungry
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
