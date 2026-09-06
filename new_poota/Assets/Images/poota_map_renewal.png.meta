@@ -3,8 +3,8 @@ guid: 7ae744623995a9e4a8cf20855cb7114a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3554413377463445526
-    second: poota_map_remake_0
+      213: -3937693110910025824
+    second: poota_map_renewal_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: poota_map_remake_0
+      name: poota_map_renewal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae715638ddf2caec0800000000000000
-      internalID: -3554413377463445526
+      spriteID: 0af74b97af08a59c0800000000000000
+      internalID: -3937693110910025824
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      poota_map_remake_0: -3554413377463445526
+      poota_map_renewal_0: -3937693110910025824
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
