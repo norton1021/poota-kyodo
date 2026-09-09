@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2466240507601310456}
   - component: {fileID: 5257746128718317329}
   m_Layer: 0
-  m_Name: 00_shortcake 3
+  m_Name: 01_apple
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5843657036778545147, guid: bd8d019a8d817104099916ba1e1c266c, type: 3}
+  m_Sprite: {fileID: -7832214784768987486, guid: 537158dccf1610f428c6d6fef2b77545, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
