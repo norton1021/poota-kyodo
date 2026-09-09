@@ -24,8 +24,8 @@ public class SkillManeger : MonoBehaviour
     {
         Debug.Log("スキル選択開始");
         skillPanel.SetActive(true);
-        skillText1.text = "UncoCannon";
-        skillText2.text = "回復";
+        skillText1.text = "Un-Co Cannon";
+        skillText2.text = "Boomeranco";
         skillText3.text = "攻撃";
         Time.timeScale = 0f;
     }
@@ -37,6 +37,8 @@ public class SkillManeger : MonoBehaviour
     }
     public void SelectSkill2()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<BoomerancoManager>().able = true;
         CloseSkillPanenl();
     }
     public void SelectSkill3()

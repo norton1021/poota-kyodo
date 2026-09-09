@@ -1770,6 +1770,7 @@ GameObject:
   - component: {fileID: 257447924}
   - component: {fileID: 257447915}
   - component: {fileID: 257447925}
+  - component: {fileID: 257447926}
   - component: {fileID: 257447921}
   - component: {fileID: 257447918}
   - component: {fileID: 257447917}
@@ -2012,6 +2013,24 @@ MonoBehaviour:
   endFrame: 180
   able: 0
   uncoCannonPrefab: {fileID: 7875831900578304524, guid: 057f65af121ab5e4da83b71dd75c0a98, type: 3}
+--- !u!114 &257447926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257447912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3936cc03f624b38498037ec3b7af1220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoomerancoManager
+  span: 150
+  startFrame1: 120
+  startFrame2: 150
+  able: 0
+  boomerancoPrefab: {fileID: 7875831900578304524, guid: 1e5bc25d06fa81e448f191ed7f40b46f, type: 3}
+  side: 0
 --- !u!1 &262130241
 GameObject:
   m_ObjectHideFlags: 0
