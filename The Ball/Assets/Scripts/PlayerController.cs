@@ -25,16 +25,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // 左に移動
-        if (Keyboard.current.aKey.wasPressedThisFrame)
+        if (Keyboard.current.aKey.isPressed)
         {
             //if (this.rigid2D.linearVelocityX < this.maxWalkSpeed)
             {
-                this.rigid2D.AddForce(-transform.right * this.walkForce);
+                this.rigid2D.AddForce(transform.right * -this.walkForce);
             }
         }
 
         // 右に移動
-        if (Keyboard.current.dKey.wasPressedThisFrame)
+        if (Keyboard.current.dKey.isPressed)
         {
             //if (this.rigid2D.linearVelocityX < this.maxWalkSpeed)
             {
