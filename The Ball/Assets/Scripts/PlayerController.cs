@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     Collider2D col2D;
     // Rigidbody2Dの取得
     Rigidbody2D rigid2D;
+    // ステージごとの初期位置を取得
+    Vector3 initialposition;
     
     void Start()
     {
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
         this.col2D = GetComponent<Collider2D>();
         this.jumping = false;
         this.rigid2D = GetComponent<Rigidbody2D>();
+        this.initialposition = transform.position;
     }
 
     void Update()
@@ -37,6 +40,13 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         Roll();
+
+        // 画面下に落ちた場合はステージの最初から
+        if (transform.position.y < -10)
+        {
+            this.rigid2D.linearVelocity = Vector2.zero;
+            transform.position = initialposition;
+        }
     }
 
     // 今床に触れているか、空中状態か判定する
@@ -87,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
         // 上にジャンプ
         if (Keyboard.current != null &&
-            Keyboard.current.spaceKey.wasPressedThisFrame)
+            Keyboard.current.spaceKey.isPressed)
         {
             this.rigid2D.linearVelocityY = this.jumpInitialVelocity;
         }
