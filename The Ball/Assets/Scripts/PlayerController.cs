@@ -44,8 +44,17 @@ public class PlayerController : MonoBehaviour
         // 画面下に落ちた場合はステージの最初から
         if (transform.position.y < -10)
         {
-            this.rigid2D.linearVelocity = Vector2.zero;
+            this.rigid2D.bodyType = RigidbodyType2D.Static;
+            this.rigid2D.bodyType = RigidbodyType2D.Dynamic;
             transform.position = initialposition;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Finish")
+        {
+            GameObject.Find("GameDirector").GetComponent<GameDirector>().Clear();
         }
     }
 
@@ -62,7 +71,7 @@ public class PlayerController : MonoBehaviour
         // 判定を出す位置（プレイヤーの足元より少し下に設定）
         Vector2 center = new Vector2(b.center.x, b.min.y - 0.05f);
         // 判定の大きさ（横幅はキャラより少し小さめ、高さはごく薄い矩形）
-        Vector2 size = new Vector2(b.size.x * 0.9f, 0.12f);
+        Vector2 size = new Vector2(b.size.x * 0.6f, 0.1f);
 
         // BoxCastを実行
         // ・center：判定の中心位置
@@ -93,7 +102,10 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         // 空中なら無視
-        if (this.jumping) return;
+        if (this.jumping)
+        {
+            return;
+        }
 
         // 上にジャンプ
         if (Keyboard.current != null &&
