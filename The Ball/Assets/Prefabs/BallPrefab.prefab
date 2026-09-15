@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3505224230122835249}
+  - component: {fileID: 2198177632291205255}
   - component: {fileID: 345434464644116667}
   - component: {fileID: 2738490153207868029}
   - component: {fileID: 6853508091317367292}
-  - component: {fileID: 2198177632291205255}
   m_Layer: 0
-  m_Name: ball_0
+  m_Name: BallPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,12 +29,30 @@ Transform:
   m_GameObject: {fileID: 6982921561295632723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.23, y: 0.56, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2198177632291205255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982921561295632723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e307459bf22eb3d4ea867eaf5e4d8724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  jumpInitialVelocity: 11
+  rollAcceleration: 0.15
+  maxWalkSpeed: 6
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!212 &345434464644116667
 SpriteRenderer:
   serializedVersion: 2
@@ -82,7 +100,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3603556060819865620, guid: eb0f8bfe4344c0e45903fde6a9f87026, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -157,15 +175,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 4.25
---- !u!114 &2198177632291205255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982921561295632723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e307459bf22eb3d4ea867eaf5e4d8724, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
