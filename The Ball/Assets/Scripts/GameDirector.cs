@@ -1,28 +1,288 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
-    // ステージ番号
-    int stage = 1;
+    // ゲームの状態
+    string mode = "menu";
+    // ステージプレイ時の状態
+    string status = "playing";
+
+    [SerializeField, Header("プレイヤーの残機")]
+    int playerLives = 5;
+
+    [SerializeField, Header("ステージごとの制限時間（秒）")]
+    float[] timeLimits = new float[11];
+    
+    // UIのオブジェクト
+    GameObject canvas;
+    // ステージ情報UIのオブジェクト
+    GameObject gameInformation;
+    // ステージ情報UIのオブジェクト
+    GameObject stageInformation;
+
+    // スコア
+    int score = 0;
+    // ステージ番号で管理するための変数（0はタイトル画面）
+    int stageVariable = 0;
+    // タイマー
+    float time = 0;
 
     void Start()
     {
-        
+        this.mode = "menu";
+        this.status = "playing";
+        this.canvas = GameObject.Find("CanvasPrefab");
+        this.gameInformation = GameObject.Find("GameInformation");
+        this.stageInformation = GameObject.Find("StageInformation");
+        this.score = 0;
+        this.stageVariable = 0;
+        this.time = 0;
     }
 
     void Update()
     {
-        
+        // メニュー時
+        if (this.mode == "menu")
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                // ステージ番号を1増加
+                this.stageVariable += 1;
+
+                // ゲームの状態をゲームプレイ時に設定
+                this.mode = "game";
+
+                // 制限時間をステージ1のものに設定
+                this.time = this.timeLimits[stageVariable];
+
+                // ステージプレイ時の状態をステージプレイ中に設定
+                this.status = "playing";
+
+                // いくつかのオブジェクトを削除せずにステージ1にシーン遷移
+                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.canvas);
+                SceneManager.LoadScene(stageVariable);
+            }
+        }
+        // ゲームプレイ時
+        else if (this.mode == "game")
+        {
+            GameInformation();
+
+            Timer();
+
+            StageInformation();
+
+            SceneTransition();
+        }
     }
 
+    // ゲーム情報の更新
+    void GameInformation()
+    {
+        // もしUIが存在しなければ処理しない
+        if (this.canvas == null ||
+            this.gameInformation == null)
+        {
+            return;
+        }
+
+        // スコアとプレイヤーの残機を表示
+        this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+            "Score: " + this.score + "\n" +
+            "Life Count: " + this.playerLives;
+    }
+
+    // 時間を減らす
+    void Timer()
+    {
+        // ステージプレイ中のみ動くようにする
+        if (this.status == "playing")
+        {
+            this.time -= Time.deltaTime;
+
+            // 時間切れ（0秒）でミス
+            if (this.time <= 0)
+            {
+                Miss();
+            }
+        }
+    }
+
+    // ステージ情報の更新
+    void StageInformation()
+    {
+        // もしUIが存在しなければ処理しない
+        if (this.canvas == null ||
+            this.stageInformation == null)
+        {
+            return;
+        }
+
+        // ミスしたとき
+        if (this.status == "miss")
+        {
+            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+                "Stage " + this.stageVariable + "\n" +
+                "Time: " + this.time.ToString("F1") + "\n" +
+                "Miss!\n" +
+                "Press the R Key";
+        }
+        // 時間切れのとき
+        else if (this.status == "timesup")
+        {
+            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+                "Stage " + this.stageVariable + "\n" +
+                "Time: " + this.time.ToString("F1") + "\n" +
+                "Time's up!\n" +
+                "Press the R Key";
+        }
+        // クリアしたとき
+        else if (this.status == "clear")
+        {
+            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+                "Stage " + this.stageVariable + "\n" +
+                "Time: " + this.time.ToString("F1") + "\n" +
+                "Cleared!\n" +
+                "Press the R Key";
+        }
+        // ゲームオーバーのとき
+        else if (this.status == "gameover")
+        {
+            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+                "Stage " + this.stageVariable + "\n" +
+                "Time: " + this.time.ToString("F1") + "\n" +
+                "Game over...\n" +
+                "Press the R Key";
+        }
+        // ステージプレイ時
+        else
+        {
+            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+                "Stage " + this.stageVariable + "\n" +
+                "Time: " + this.time.ToString("F1");
+        }
+    }
+    
+    // ミスしたときの処理
+    public void Miss()
+    {
+        // ステージプレイ中以外で呼び出されないように返す
+        if (this.status != "playing")
+        {
+            return;
+        }
+
+        // プレイヤーを削除
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+
+        // プレイヤーの残機を1減少
+        this.playerLives -= 1;
+
+        // もし残機が0ならばゲームオーバー
+        if (this.playerLives <= 0)
+        {
+            GameOver();
+        }
+
+        // ゲームオーバーではないとき
+        if (this.status != "gameover")
+        {
+            // ミスしたか時間切れか
+            if (this.time > 0)
+            {
+                this.status = "miss";
+            }
+            else
+            {
+                this.status = "timesup";
+            }
+        }
+    }
+
+    // ステージクリアの処理
     public void Clear()
     {
-        // ステージ番号を1増加
-        this.stage += 1;
+        // ステージプレイ中以外で呼び出されないように返す
+        if (this.status != "playing")
+        {
+            return;
+        }
 
-        // このオブジェクトを削除せずにシーン遷移
-        DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene(this.stage);
+        // プレイヤーを削除
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+
+        this.status = "clear";
+
+        // クリア時の残り時間をスコアに変換
+        this.score += (int)(this.time * 1000);
+    }
+
+    // ゲームオーバーの処理
+    void GameOver()
+    {
+        this.status = "gameover";
+
+        // 結果を表示
+    }
+
+    void SceneTransition()
+    {
+        // ミスまたは時間切れのとき
+        if (this.status == "miss" ||
+            this.status == "timesup")
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                // 制限時間をリセット
+                this.time = this.timeLimits[stageVariable];
+
+                // ステージプレイ時の状態をステージプレイ中にリセット
+                this.status = "playing";
+
+                // いくつかのオブジェクトを削除せずにシーン遷移
+                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.canvas);
+                SceneManager.LoadScene(this.stageVariable);
+            }
+        }
+        // クリアしたとき
+        else if (this.status == "clear")
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                // ステージ番号を1増加
+                this.stageVariable += 1;
+
+                // 制限時間を次のステージのものに更新
+                this.time = this.timeLimits[stageVariable];
+
+                // ステージプレイ時の状態をステージプレイ中にリセット
+                this.status = "playing";
+
+                // いくつかのオブジェクトを削除せずにシーン遷移
+                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.canvas);
+                SceneManager.LoadScene(this.stageVariable);
+            }
+        }
+        // ゲームオーバーのとき
+        else if (this.status == "gameover")
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                // タイトル画面へ
+                Destroy(gameObject);
+                Destroy(this.canvas);
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 }

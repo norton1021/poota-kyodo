@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     Collider2D col2D;
     // Rigidbody2Dの取得
     Rigidbody2D rigid2D;
-    // ステージごとの初期位置を取得
-    Vector3 initialposition;
     
     void Start()
     {
@@ -30,7 +28,6 @@ public class PlayerController : MonoBehaviour
         this.col2D = GetComponent<Collider2D>();
         this.jumping = false;
         this.rigid2D = GetComponent<Rigidbody2D>();
-        this.initialposition = transform.position;
     }
 
     void Update()
@@ -41,12 +38,10 @@ public class PlayerController : MonoBehaviour
 
         Roll();
 
-        // 画面下に落ちた場合はステージの最初から
+        // 画面下に落ちるとミス
         if (transform.position.y < -10)
         {
-            this.rigid2D.bodyType = RigidbodyType2D.Static;
-            this.rigid2D.bodyType = RigidbodyType2D.Dynamic;
-            transform.position = initialposition;
+            GameObject.Find("GameDirectorPrefab").GetComponent<GameDirector>().Miss();
         }
     }
 
@@ -54,7 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Finish")
         {
-            GameObject.Find("GameDirector").GetComponent<GameDirector>().Clear();
+            GameObject.Find("GameDirectorPrefab").GetComponent<GameDirector>().Clear();
         }
     }
 
@@ -62,7 +57,10 @@ public class PlayerController : MonoBehaviour
     void HitFloor()
     {
         // もしプレイヤーのColliderが存在しなければ処理しない
-        if (col2D == null) return;
+        if (col2D == null)
+        {
+            return;
+        }
 
         // 接地判定のためのBoxCast（四角形の当たり判定を下に飛ばす）を準備する
 
