@@ -38,7 +38,7 @@ public class GameDirector : MonoBehaviour
     int scenes = 0;
 
     // （デバッグ用）ステージ番号入力場所
-    TMP_InputField IF;
+    TMP_InputField inputField;
     
     void Start()
     {
@@ -53,9 +53,9 @@ public class GameDirector : MonoBehaviour
         this.time = 0;
         this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
         this.mainCamera.GetComponent<CameraController>().prePlayerPos = new Vector3(0, 0, -10);
-        this.scenes = SceneManager.sceneCount;
-        this.IF = GameObject.Find("InputStageNumber").GetComponent<TMP_InputField>();
-
+        this.scenes = SceneManager.sceneCountInBuildSettings;
+        this.inputField = GameObject.Find("InputField").GetComponent<TMP_InputField>();
+        this.inputField.onEndEdit.AddListener(OnEnterInputField);
     }
 
     void Update()
@@ -63,47 +63,21 @@ public class GameDirector : MonoBehaviour
         // メニュー時
         if (this.mode == "menu")
         {
-            //this.stageInformation.GetComponent<TextMeshProUGUI>().text =
-            //    "Enter numbers from 1 to " + (this.scenes - 1);
-
-            // （デバッグ用）ステージ番号を入力する
-            if (Keyboard.current != null &&
-                Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                // ステージ番号を1に
-                this.stageVariable = 1;
-                
-                // ゲームの状態をゲームプレイ時に設定
-                this.mode = "game";
-
-                // 制限時間をステージ番号のものに設定
-                this.time = this.timeLimits[stageVariable];
-
-                // カメラモードをステージ番号のものに設定
-                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
-
-                // ステージプレイ時の状態をステージプレイ中に設定
-                this.status = "playing";
-
-                // いくつかのオブジェクトを削除せずにステージ番号にシーン遷移
-                DontDestroyOnLoad(gameObject);
-                DontDestroyOnLoad(this.mainCamera);
-                DontDestroyOnLoad(this.canvas);
-                SceneManager.LoadScene(stageVariable);
-                // Debug.Log("a");
-                // this.IF.onEndEdit.AddListener(OnEnterInputField);
-            }
+            this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+                "The Ball";
+            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+                "Enter numbers from 1 to " + (this.scenes - 1);
         }
         // ゲームプレイ時
         else if (this.mode == "game")
         {
-            GameInformation();
+            SceneTransition();
 
             Timer();
 
             StageInformation();
 
-            SceneTransition();
+            GameInformation();
         }
     }
 
@@ -113,29 +87,16 @@ public class GameDirector : MonoBehaviour
         if (int.TryParse(inputMsg, out this.stageVariable))
         {
             if (this.stageVariable >= 1 &&
-            this.stageVariable <= this.scenes)
+                this.stageVariable <= this.scenes - 1)
             {
                 // ゲームの状態をゲームプレイ時に設定
                 this.mode = "game";
 
-                // 制限時間をステージ番号のものに設定
-                this.time = this.timeLimits[stageVariable];
-
-                // カメラモードをステージ番号のものに設定
-                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
-
-                // ステージプレイ時の状態をステージプレイ中に設定
-                this.status = "playing";
-
-                // いくつかのオブジェクトを削除せずにステージ番号にシーン遷移
-                DontDestroyOnLoad(gameObject);
-                DontDestroyOnLoad(this.mainCamera);
-                DontDestroyOnLoad(this.canvas);
-                SceneManager.LoadScene(stageVariable);
+                ResetStatus();
             }
             else
             {
-                Debug.Log("1から" + this.scenes + "までの数字を入力してね");
+                Debug.Log("1から" + (this.scenes - 1) + "までの数字を入力してね");
             }
         }
         else
@@ -144,20 +105,55 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-    // ゲーム情報の更新
-    void GameInformation()
+    // ゲームの状態ごとのシーンの遷移方法
+    void SceneTransition()
     {
-        // もしUIが存在しなければ処理しない
-        if (this.canvas == null ||
-            this.gameInformation == null)
+        // ミスまたは時間切れのとき
+        if (this.status == "miss" ||
+            this.status == "timesup")
         {
-            return;
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                ResetStatus();
+            }
         }
+        // クリアしたとき
+        else if (this.status == "clear")
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                // ステージ番号を1増加
+                this.stageVariable += 1;
 
-        // スコアとプレイヤーの残機を表示
-        this.gameInformation.GetComponent<TextMeshProUGUI>().text =
-            "Score: " + this.score + "\n" +
-            "Life Count: " + this.playerLives;
+                // 最後のステージに到達したらタイトルシーンへ
+                if (this.stageVariable > this.scenes - 1)
+                {
+                    Destroy(gameObject);
+                    Destroy(this.mainCamera);
+                    Destroy(this.canvas);
+                    SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    ResetStatus();
+                }
+            }
+        }
+        // ゲームオーバーのとき
+        else if (this.status == "gameover")
+        {
+            if (Keyboard.current != null &&
+                Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                // タイトルシーンへ
+                Destroy(gameObject);
+                Destroy(this.mainCamera);
+                Destroy(this.canvas);
+                SceneManager.LoadScene(0);
+            }
+        }
     }
 
     // 時間を減らす
@@ -230,7 +226,23 @@ public class GameDirector : MonoBehaviour
                 "Time: " + this.time.ToString("F1");
         }
     }
-    
+
+    // ゲーム情報の更新
+    void GameInformation()
+    {
+        // もしUIが存在しなければ処理しない
+        if (this.canvas == null ||
+            this.gameInformation == null)
+        {
+            return;
+        }
+
+        // スコアとプレイヤーの残機を表示
+        this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+            "Score: " + this.score + "\n" +
+            "Life Count: " + this.playerLives;
+    }
+
     // ミスしたときの処理
     public void Miss()
     {
@@ -293,68 +305,22 @@ public class GameDirector : MonoBehaviour
         // 結果を表示
     }
 
-    void SceneTransition()
+    // シーン遷移時の各項目のリセット
+    void ResetStatus()
     {
-        // ミスまたは時間切れのとき
-        if (this.status == "miss" ||
-            this.status == "timesup")
-        {
-            if (Keyboard.current != null &&
-                Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                // 制限時間をリセット
-                this.time = this.timeLimits[stageVariable];
+        // 制限時間を更新
+        this.time = this.timeLimits[stageVariable];
 
-                // カメラモードをリセット
-                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+        // カメラモードを更新
+        this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
-                // ステージプレイ時の状態をステージプレイ中にリセット
-                this.status = "playing";
+        // ステージプレイ時の状態をステージプレイ中にリセット
+        this.status = "playing";
 
-                // いくつかのオブジェクトを削除せずにシーン遷移
-                DontDestroyOnLoad(gameObject);
-                DontDestroyOnLoad(this.mainCamera);
-                DontDestroyOnLoad(this.canvas);
-                SceneManager.LoadScene(this.stageVariable);
-            }
-        }
-        // クリアしたとき
-        else if (this.status == "clear")
-        {
-            if (Keyboard.current != null &&
-                Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                // ステージ番号を1増加
-                this.stageVariable += 1;
-
-                // 制限時間を次のステージのものに更新
-                this.time = this.timeLimits[stageVariable];
-
-                // カメラモードを次のステージのものに更新
-                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
-
-                // ステージプレイ時の状態をステージプレイ中にリセット
-                this.status = "playing";
-
-                // いくつかのオブジェクトを削除せずにシーン遷移
-                DontDestroyOnLoad(gameObject);
-                DontDestroyOnLoad(this.mainCamera);
-                DontDestroyOnLoad(this.canvas);
-                SceneManager.LoadScene(this.stageVariable);
-            }
-        }
-        // ゲームオーバーのとき
-        else if (this.status == "gameover")
-        {
-            if (Keyboard.current != null &&
-                Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                // タイトル画面へ
-                Destroy(gameObject);
-                Destroy(this.mainCamera);
-                Destroy(this.canvas);
-                SceneManager.LoadScene(0);
-            }
-        }
+        // いくつかのオブジェクトを削除せずにシーン遷移
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.mainCamera);
+        DontDestroyOnLoad(this.canvas);
+        SceneManager.LoadScene(this.stageVariable);
     }
 }

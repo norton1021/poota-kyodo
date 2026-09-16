@@ -25,11 +25,6 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        Application.targetFrameRate = 60;
-        this.col2D = GetComponent<Collider2D>();
-        this.jumping = false;
-        this.rigid2D = GetComponent<Rigidbody2D>();
-
         // タイトルシーン以外で始めるとタイトルシーンに遷移する
         if (GameObject.Find("Main Camera") == null ||
             GameObject.Find("GameDirectorPrefab") == null ||
@@ -37,6 +32,11 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+
+        Application.targetFrameRate = 60;
+        this.col2D = GetComponent<Collider2D>();
+        this.jumping = false;
+        this.rigid2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
