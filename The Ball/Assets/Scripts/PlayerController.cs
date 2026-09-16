@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     // 実寸取得用
     Collider2D col2D;
     // Rigidbody2Dの取得
-    Rigidbody2D rigid2D;
+    public Rigidbody2D rigid2D;
     
     void Start()
     {
