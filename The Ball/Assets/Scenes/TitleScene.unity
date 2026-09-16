@@ -983,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6153945939657673678, guid: 8c3f1d6397a0feb4480f0c4a7d409bcb, type: 3}
       propertyPath: m_text
-      value: Press the Q Key
+      value: Press the R Key
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

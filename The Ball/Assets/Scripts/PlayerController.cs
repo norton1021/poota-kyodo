@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class PlayerController : MonoBehaviour
         this.col2D = GetComponent<Collider2D>();
         this.jumping = false;
         this.rigid2D = GetComponent<Rigidbody2D>();
+
+        // タイトルシーン以外で始めるとタイトルシーンに遷移する
+        if (GameObject.Find("Main Camera") == null ||
+            GameObject.Find("GameDirectorPrefab") == null ||
+            GameObject.Find("CanvasPrefab") == null)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void Update()
