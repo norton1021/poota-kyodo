@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     // 横移動: horizontal
     // 縦移動: vertical
     // 自由: free
-    public string cameraMode = "fixed";
+    public string cameraMode;
 
     // プレイヤーのオブジェクトを取得
     GameObject player;
@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        this.cameraMode = "fixed";
         this.prePlayerPos = transform.position;
         this.player = GameObject.FindGameObjectWithTag("Player");
     }
