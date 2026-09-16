@@ -95,6 +95,7 @@ public class GameDirector : MonoBehaviour
     // （デバッグ用）ステージ番号を入力する
     void OnEnterInputField(string inputMsg)
     {
+        this.inputField.DeactivateInputField();
         if (int.TryParse(inputMsg, out this.stageVariable))
         {
             if (this.stageVariable >= 1 &&
@@ -108,11 +109,13 @@ public class GameDirector : MonoBehaviour
             else
             {
                 Debug.Log("1から" + (this.scenes - 1) + "までの数字を入力してね");
+                this.inputField.ActivateInputField();
             }
         }
         else
         {
-            Debug.Log("入力が無効です；；");
+            Debug.Log("入力が無効です");
+            this.inputField.ActivateInputField();
         }
     }
 
