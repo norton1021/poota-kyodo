@@ -28,6 +28,8 @@ public class GameDirector : MonoBehaviour
     // カメラのオブジェクト
     GameObject mainCamera;
 
+    // クリア時の獲得ポイント
+    int point = 0;
     // スコア
     int score = 0;
     // ステージ番号で管理するための変数（0はタイトル画面）
@@ -48,12 +50,15 @@ public class GameDirector : MonoBehaviour
         this.gameInformation = GameObject.Find("GameInformation");
         this.stageInformation = GameObject.Find("StageInformation");
         this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        this.point = 0;
         this.score = 0;
         this.stageVariable = 0;
         this.time = 0;
         this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
         this.mainCamera.GetComponent<CameraController>().prePlayerPos = new Vector3(0, 0, -10);
         this.scenes = SceneManager.sceneCountInBuildSettings;
+
+        // （デバッグ用）inputFieldを有効化
         this.inputField = GameObject.Find("InputField").GetComponent<TMP_InputField>();
         this.inputField.onEndEdit.AddListener(OnEnterInputField);
     }
@@ -67,6 +72,12 @@ public class GameDirector : MonoBehaviour
                 "The Ball";
             this.stageInformation.GetComponent<TextMeshProUGUI>().text =
                 "Enter numbers from 1 to " + (this.scenes - 1);
+
+            // （デバッグ用）inputFieldを選択状態にする
+            if (this.inputField != null)
+            {
+                this.inputField.Select();
+            }
         }
         // ゲームプレイ時
         else if (this.mode == "game")
@@ -238,9 +249,18 @@ public class GameDirector : MonoBehaviour
         }
 
         // スコアとプレイヤーの残機を表示
-        this.gameInformation.GetComponent<TextMeshProUGUI>().text =
-            "Score: " + this.score + "\n" +
-            "Life Count: " + this.playerLives;
+        if (this.status == "clear")
+        {
+            this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+                "Score: " + this.score + "  +" + this.point + "pts!\n" +
+                "Life Count: " + this.playerLives;
+        }
+        else
+        {
+            this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+                "Score: " + this.score + "\n" +
+                "Life Count: " + this.playerLives;
+        }
     }
 
     // ミスしたときの処理
@@ -293,8 +313,10 @@ public class GameDirector : MonoBehaviour
 
         this.status = "clear";
 
-        // クリア時の残り時間をスコアに変換
-        this.score += (int)(this.time * 1000);
+        // クリア時の残り時間を獲得ポイントに変換
+        this.point = (int)(this.time * 1000);
+        // ポイントをスコアに合算
+        this.score += this.point;
     }
 
     // ゲームオーバーの処理
