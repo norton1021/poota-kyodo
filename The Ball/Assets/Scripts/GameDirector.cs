@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngineInternal;
 
 public class GameDirector : MonoBehaviour
 {
@@ -35,7 +34,12 @@ public class GameDirector : MonoBehaviour
     int stageVariable = 0;
     // タイマー
     float time = 0;
+    // シーン数のカウント
+    int scenes = 0;
 
+    // （デバッグ用）ステージ番号入力場所
+    TMP_InputField IF;
+    
     void Start()
     {
         this.mode = "menu";
@@ -49,6 +53,9 @@ public class GameDirector : MonoBehaviour
         this.time = 0;
         this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
         this.mainCamera.GetComponent<CameraController>().prePlayerPos = new Vector3(0, 0, -10);
+        this.scenes = SceneManager.sceneCount;
+        this.IF = GameObject.Find("InputStageNumber").GetComponent<TMP_InputField>();
+
     }
 
     void Update()
@@ -56,29 +63,35 @@ public class GameDirector : MonoBehaviour
         // メニュー時
         if (this.mode == "menu")
         {
-            if (Keyboard.current != null &&
-                Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                // ステージ番号を1増加
-                this.stageVariable += 1;
+            //this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+            //    "Enter numbers from 1 to " + (this.scenes - 1);
 
+            // （デバッグ用）ステージ番号を入力する
+            if (Keyboard.current != null &&
+                Keyboard.current.qKey.wasPressedThisFrame)
+            {
+                // ステージ番号を1に
+                this.stageVariable = 1;
+                
                 // ゲームの状態をゲームプレイ時に設定
                 this.mode = "game";
 
-                // 制限時間をステージ1のものに設定
+                // 制限時間をステージ番号のものに設定
                 this.time = this.timeLimits[stageVariable];
 
-                // カメラモードをステージ1のものに設定
+                // カメラモードをステージ番号のものに設定
                 this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
                 // ステージプレイ時の状態をステージプレイ中に設定
                 this.status = "playing";
 
-                // いくつかのオブジェクトを削除せずにステージ1にシーン遷移
+                // いくつかのオブジェクトを削除せずにステージ番号にシーン遷移
                 DontDestroyOnLoad(gameObject);
                 DontDestroyOnLoad(this.mainCamera);
                 DontDestroyOnLoad(this.canvas);
                 SceneManager.LoadScene(stageVariable);
+                // Debug.Log("a");
+                // this.IF.onEndEdit.AddListener(OnEnterInputField);
             }
         }
         // ゲームプレイ時
@@ -91,6 +104,43 @@ public class GameDirector : MonoBehaviour
             StageInformation();
 
             SceneTransition();
+        }
+    }
+
+    // （デバッグ用）ステージ番号を入力する
+    void OnEnterInputField(string inputMsg)
+    {
+        if (int.TryParse(inputMsg, out this.stageVariable))
+        {
+            if (this.stageVariable >= 1 &&
+            this.stageVariable <= this.scenes)
+            {
+                // ゲームの状態をゲームプレイ時に設定
+                this.mode = "game";
+
+                // 制限時間をステージ番号のものに設定
+                this.time = this.timeLimits[stageVariable];
+
+                // カメラモードをステージ番号のものに設定
+                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+
+                // ステージプレイ時の状態をステージプレイ中に設定
+                this.status = "playing";
+
+                // いくつかのオブジェクトを削除せずにステージ番号にシーン遷移
+                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.mainCamera);
+                DontDestroyOnLoad(this.canvas);
+                SceneManager.LoadScene(stageVariable);
+            }
+            else
+            {
+                Debug.Log("1から" + this.scenes + "までの数字を入力してね");
+            }
+        }
+        else
+        {
+            Debug.Log("入力が無効です；；");
         }
     }
 
