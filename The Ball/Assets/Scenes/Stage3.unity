@@ -981,8 +981,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3505224230122835249, guid: 7fb3c3f8bcf5d52499dcec2c9f1a9b98, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1508645963}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6982921561295632723, guid: 7fb3c3f8bcf5d52499dcec2c9f1a9b98, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1666235713}
   m_SourcePrefab: {fileID: 100100000, guid: 7fb3c3f8bcf5d52499dcec2c9f1a9b98, type: 3}
+--- !u!1 &1281539082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6982921561295632723, guid: 7fb3c3f8bcf5d52499dcec2c9f1a9b98, type: 3}
+  m_PrefabInstance: {fileID: 1281539081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1455865789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1093,6 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a434c55ae9f8b4eb23244632061e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  stompBounce: 8
 --- !u!61 &1508645965
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1209,6 +1218,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3505224230122835249, guid: 7fb3c3f8bcf5d52499dcec2c9f1a9b98, type: 3}
   m_PrefabInstance: {fileID: 1281539081}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1666235713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281539082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a434c55ae9f8b4eb23244632061e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  stompBounce: 8
 --- !u!1001 &1952632620
 PrefabInstance:
   m_ObjectHideFlags: 0
