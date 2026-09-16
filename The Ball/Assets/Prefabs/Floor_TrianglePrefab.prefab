@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5594593173344771052}
   - component: {fileID: 9086909831817280090}
   - component: {fileID: 2697187065424097058}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor_TrianglePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

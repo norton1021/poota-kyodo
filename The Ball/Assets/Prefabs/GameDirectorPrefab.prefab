@@ -48,8 +48,8 @@ MonoBehaviour:
   timeLimits:
   - 0
   - 10
-  - 0
-  - 0
+  - 15
+  - 20
   - 0
   - 0
   - 0
