@@ -208,6 +208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: robot_0 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5469056323831943427, guid: e5343f96b03fe064e937849e8feb8e1f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5719632767410139507, guid: e5343f96b03fe064e937849e8feb8e1f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.13044915
