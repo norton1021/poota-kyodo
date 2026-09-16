@@ -68,7 +68,7 @@ public class GameDirector : MonoBehaviour
 
             // （デバッグ用）ステージ番号を入力する
             if (Keyboard.current != null &&
-                Keyboard.current.qKey.wasPressedThisFrame)
+                Keyboard.current.rKey.wasPressedThisFrame)
             {
                 // ステージ番号を1に
                 this.stageVariable = 1;
