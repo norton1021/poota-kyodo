@@ -16,13 +16,12 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        this.cameraMode = "fixed";
-        this.prePlayerPos = transform.position;
         this.player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
+        this.player = GameObject.FindGameObjectWithTag("Player");
         // カメラを固定
         if (this.cameraMode == "fixed")
         {

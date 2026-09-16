@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngineInternal;
 
 public class GameDirector : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class GameDirector : MonoBehaviour
     GameObject gameInformation;
     // ステージ情報UIのオブジェクト
     GameObject stageInformation;
+    // カメラのオブジェクト
+    GameObject mainCamera;
 
     // スコア
     int score = 0;
@@ -40,9 +43,12 @@ public class GameDirector : MonoBehaviour
         this.canvas = GameObject.Find("CanvasPrefab");
         this.gameInformation = GameObject.Find("GameInformation");
         this.stageInformation = GameObject.Find("StageInformation");
+        this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.score = 0;
         this.stageVariable = 0;
         this.time = 0;
+        this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+        this.mainCamera.GetComponent<CameraController>().prePlayerPos = new Vector3(0, 0, -10);
     }
 
     void Update()
@@ -63,13 +69,14 @@ public class GameDirector : MonoBehaviour
                 this.time = this.timeLimits[stageVariable];
 
                 // カメラモードをステージ1のものに設定
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
                 // ステージプレイ時の状態をステージプレイ中に設定
                 this.status = "playing";
 
                 // いくつかのオブジェクトを削除せずにステージ1にシーン遷移
                 DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.mainCamera);
                 DontDestroyOnLoad(this.canvas);
                 SceneManager.LoadScene(stageVariable);
             }
@@ -249,13 +256,14 @@ public class GameDirector : MonoBehaviour
                 this.time = this.timeLimits[stageVariable];
 
                 // カメラモードをリセット
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
                 // ステージプレイ時の状態をステージプレイ中にリセット
                 this.status = "playing";
 
                 // いくつかのオブジェクトを削除せずにシーン遷移
                 DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.mainCamera);
                 DontDestroyOnLoad(this.canvas);
                 SceneManager.LoadScene(this.stageVariable);
             }
@@ -273,13 +281,14 @@ public class GameDirector : MonoBehaviour
                 this.time = this.timeLimits[stageVariable];
 
                 // カメラモードを次のステージのものに更新
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+                this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
                 // ステージプレイ時の状態をステージプレイ中にリセット
                 this.status = "playing";
 
                 // いくつかのオブジェクトを削除せずにシーン遷移
                 DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this.mainCamera);
                 DontDestroyOnLoad(this.canvas);
                 SceneManager.LoadScene(this.stageVariable);
             }
@@ -292,6 +301,7 @@ public class GameDirector : MonoBehaviour
             {
                 // タイトル画面へ
                 Destroy(gameObject);
+                Destroy(this.mainCamera);
                 Destroy(this.canvas);
                 SceneManager.LoadScene(0);
             }
