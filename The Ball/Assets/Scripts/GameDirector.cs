@@ -15,6 +15,9 @@ public class GameDirector : MonoBehaviour
 
     [SerializeField, Header("ステージごとの制限時間（秒）")]
     float[] timeLimits = new float[11];
+
+    [SerializeField, Header("ステージごとのカメラモード")]
+    string[] stageCameraMode = new string[11];
     
     // UIのオブジェクト
     GameObject canvas;
@@ -58,6 +61,9 @@ public class GameDirector : MonoBehaviour
 
                 // 制限時間をステージ1のものに設定
                 this.time = this.timeLimits[stageVariable];
+
+                // カメラモードをステージ1のものに設定
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
                 // ステージプレイ時の状態をステージプレイ中に設定
                 this.status = "playing";
@@ -242,6 +248,9 @@ public class GameDirector : MonoBehaviour
                 // 制限時間をリセット
                 this.time = this.timeLimits[stageVariable];
 
+                // カメラモードをリセット
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+
                 // ステージプレイ時の状態をステージプレイ中にリセット
                 this.status = "playing";
 
@@ -262,6 +271,9 @@ public class GameDirector : MonoBehaviour
 
                 // 制限時間を次のステージのものに更新
                 this.time = this.timeLimits[stageVariable];
+
+                // カメラモードを次のステージのものに更新
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
 
                 // ステージプレイ時の状態をステージプレイ中にリセット
                 this.status = "playing";
