@@ -20,6 +20,8 @@ public class GameDirector : MonoBehaviour
         public float timeLimits;
 
         public string stageCameraMode;
+
+        public Vector3 stageCameraOffset;
     }
 
     [SerializeField, Header("ステージごとの制限時間とカメラの設定")]
@@ -374,6 +376,7 @@ public class GameDirector : MonoBehaviour
 
         // カメラモードを更新
         this.mainCamera.GetComponent<CameraController>().cameraMode = stageSettings[stageVariable].stageCameraMode;
+        this.mainCamera.GetComponent<CameraController>().cameraOffset = stageSettings[stageVariable].stageCameraOffset;
 
         // ステージプレイ時の状態をステージプレイ中にリセット
         this.status = "playing";
