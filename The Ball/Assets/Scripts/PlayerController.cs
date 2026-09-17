@@ -70,7 +70,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            if (this.landing)
+            if (this.landing &&
+                GameObject.Find("SoundManager") != null)
             {
                 GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayTheSound("接地");
             }
@@ -110,7 +111,8 @@ public class PlayerController : MonoBehaviour
         // 地面と触れたか確認
         if (grounded)
         {
-            if (this.landing)
+            if (this.landing &&
+                GameObject.Find("SoundManager") != null)
             {
                 GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayTheSound("接地");
             }
