@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
       propertyPath: stageSettings.Array.data[6].timeLimits
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
       propertyPath: stageSettings.Array.data[4].stageCameraMode
@@ -153,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
       propertyPath: stageSettings.Array.data[6].stageCameraMode
-      value: 
+      value: free
       objectReference: {fileID: 0}
     - target: {fileID: 5919996310970473310, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
       propertyPath: m_LocalPosition.x
