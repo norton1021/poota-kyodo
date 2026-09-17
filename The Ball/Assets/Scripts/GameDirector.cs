@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -60,7 +59,7 @@ public class GameDirector : MonoBehaviour
         this.gameInformation = GameObject.Find("GameInformation");
         this.stageInformation = GameObject.Find("StageInformation");
         this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        this.soundManager = GameObject.Find("SoundManager");
+        this.soundManager = GameObject.Find("SoundManagerPrefab");
         this.point = 0;
         this.score = 0;
         this.stageVariable = 0;
@@ -124,7 +123,7 @@ public class GameDirector : MonoBehaviour
             else
             {
                 // 「エラー」を鳴らす
-                // this.soundManager.GetComponent<SoundManager>().PlayTheSound("エラー");
+                this.soundManager.GetComponent<SoundManager>().PlayTheSound("エラー");
 
                 Debug.Log("1から" + (this.scenes - 1) + "までの数字を入力してね");
                 this.inputField.ActivateInputField();
@@ -133,7 +132,7 @@ public class GameDirector : MonoBehaviour
         else
         {
             // 「エラー」を鳴らす
-            // this.soundManager.GetComponent<SoundManager>().PlayTheSound("エラー");
+            this.soundManager.GetComponent<SoundManager>().PlayTheSound("エラー");
 
             Debug.Log("入力が無効です");
             this.inputField.ActivateInputField();
@@ -165,10 +164,12 @@ public class GameDirector : MonoBehaviour
                 // 最後のステージに到達したらタイトルシーンへ
                 if (this.stageVariable > this.scenes - 1)
                 {
-                    Destroy(gameObject);
-                    Destroy(this.mainCamera);
-                    Destroy(this.canvas);
-                    SceneManager.LoadScene(0);
+                    this.stageVariable = 0;
+                    this.soundManager.GetComponent<SoundManager>().PlayTheBGM("stop");
+                    SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+                    SceneManager.MoveGameObjectToScene(this.canvas, SceneManager.GetActiveScene());
+                    SceneManager.MoveGameObjectToScene(this.mainCamera, SceneManager.GetActiveScene());
+                    SceneManager.LoadScene("TitleScene");
                 }
                 else
                 {
@@ -183,10 +184,12 @@ public class GameDirector : MonoBehaviour
                 Keyboard.current.rKey.wasPressedThisFrame)
             {
                 // タイトルシーンへ
-                Destroy(gameObject);
-                Destroy(this.mainCamera);
-                Destroy(this.canvas);
-                SceneManager.LoadScene(0);
+                this.stageVariable = 0;
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("stop");
+                SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+                SceneManager.MoveGameObjectToScene(this.canvas, SceneManager.GetActiveScene());
+                SceneManager.MoveGameObjectToScene(this.mainCamera, SceneManager.GetActiveScene());
+                SceneManager.LoadScene("TitleScene");
             }
         }
     }
@@ -346,11 +349,11 @@ public class GameDirector : MonoBehaviour
         this.score += this.point;
 
         // 制限時間に対する残り時間の割合でファンファーレを変える
-        if (this.time / stageSettings[this.stageVariable].timeLimits < 0.3f)
+        if (this.time / stageSettings[this.stageVariable].timeLimits < 0.2f)
         {
             this.soundManager.GetComponent<SoundManager>().PlayTheSound("クリア1");
         }
-        else if (this.time / stageSettings[this.stageVariable].timeLimits < 0.5f)
+        else if (this.time / stageSettings[this.stageVariable].timeLimits < 0.4f)
         {
             this.soundManager.GetComponent<SoundManager>().PlayTheSound("クリア2");
         }
@@ -380,6 +383,29 @@ public class GameDirector : MonoBehaviour
 
         // ステージプレイ時の状態をステージプレイ中にリセット
         this.status = "playing";
+
+        // ステージに応じてBGMを再生
+        switch ((stageVariable - 1) / 2)
+        {
+            case 0:
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM1");
+                break;
+            case 1:
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM2");
+                break;
+            case 2:
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM3");
+                break;
+            case 3:
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM4");
+                break;
+            case 4:
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM5");
+                break;
+            default:
+                this.soundManager.GetComponent<SoundManager>().PlayTheBGM("stop");
+                break;
+        }
 
         // いくつかのオブジェクトを削除せずにシーン遷移
         DontDestroyOnLoad(gameObject);

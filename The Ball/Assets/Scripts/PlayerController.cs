@@ -71,9 +71,9 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             if (this.landing &&
-                GameObject.Find("SoundManager") != null)
+                GameObject.Find("SoundManagerPrefab") != null)
             {
-                GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayTheSound("接地");
+                GameObject.Find("SoundManagerPrefab").GetComponent<SoundManager>().PlayTheSound("接地");
             }
         }
     }
@@ -112,9 +112,9 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {
             if (this.landing &&
-                GameObject.Find("SoundManager") != null)
+                GameObject.Find("SoundManagerPrefab") != null)
             {
-                GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayTheSound("接地");
+                GameObject.Find("SoundManagerPrefab").GetComponent<SoundManager>().PlayTheSound("接地");
             }
 
             // 接地済とする
