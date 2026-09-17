@@ -45,27 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameDirector
   playerLives: 5
-  timeLimits:
-  - 0
-  - 10
-  - 15
-  - 20
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  stageCameraMode:
-  - fixed
-  - fixed
-  - horizontal
-  - horizontal
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  stageSettings:
+  - timeLimits: 0
+    stageCameraMode: fixed
+  - timeLimits: 10
+    stageCameraMode: fixed
+  - timeLimits: 15
+    stageCameraMode: horizontal
+  - timeLimits: 20
+    stageCameraMode: horizontal
+  - timeLimits: 0
+    stageCameraMode: 
+  - timeLimits: 0
+    stageCameraMode: 
+  - timeLimits: 0
+    stageCameraMode: 
+  - timeLimits: 0
+    stageCameraMode: 
+  - timeLimits: 0
+    stageCameraMode: 
+  - timeLimits: 0
+    stageCameraMode: 
+  - timeLimits: 0
+    stageCameraMode: 
