@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class stickfigureController : MonoBehaviour
+public class StickfigureController : MonoBehaviour
 {
     // ボールのオブジェクトを取得
     GameObject ball;
