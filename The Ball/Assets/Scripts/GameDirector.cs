@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,16 @@ public class GameDirector : MonoBehaviour
     [SerializeField, Header("プレイヤーの残機")]
     int playerLives = 5;
 
-    [SerializeField, Header("ステージごとの制限時間（秒）")]
-    float[] timeLimits = new float[11];
+    [System.Serializable]
+    public class StageSettings
+    {
+        public float timeLimits;
 
-    [SerializeField, Header("ステージごとのカメラモード")]
-    string[] stageCameraMode = new string[11];
+        public string stageCameraMode;
+    }
+
+    [SerializeField, Header("ステージごとの制限時間とカメラの設定")]
+    StageSettings[] stageSettings = new StageSettings[11];
     
     // UIのオブジェクト
     GameObject canvas;
@@ -27,6 +33,8 @@ public class GameDirector : MonoBehaviour
     GameObject stageInformation;
     // カメラのオブジェクト
     GameObject mainCamera;
+    // サウンドマネージャーのオブジェクト
+    GameObject soundManager;
 
     // クリア時の獲得ポイント
     int point = 0;
@@ -50,11 +58,12 @@ public class GameDirector : MonoBehaviour
         this.gameInformation = GameObject.Find("GameInformation");
         this.stageInformation = GameObject.Find("StageInformation");
         this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        this.soundManager = GameObject.Find("SoundManager");
         this.point = 0;
         this.score = 0;
         this.stageVariable = 0;
         this.time = 0;
-        this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+        this.mainCamera.GetComponent<CameraController>().cameraMode = stageSettings[stageVariable].stageCameraMode;
         this.mainCamera.GetComponent<CameraController>().prePlayerPos = new Vector3(0, 0, -10);
         this.scenes = SceneManager.sceneCountInBuildSettings;
 
@@ -101,6 +110,10 @@ public class GameDirector : MonoBehaviour
             if (this.stageVariable >= 1 &&
                 this.stageVariable <= this.scenes - 1)
             {
+
+                // 「決定」を鳴らす
+                this.soundManager.GetComponent<SoundManager>().PlayTheSound("決定");
+
                 // ゲームの状態をゲームプレイ時に設定
                 this.mode = "game";
 
@@ -108,12 +121,18 @@ public class GameDirector : MonoBehaviour
             }
             else
             {
+                // 「エラー」を鳴らす
+                // this.soundManager.GetComponent<SoundManager>().PlayTheSound("エラー");
+
                 Debug.Log("1から" + (this.scenes - 1) + "までの数字を入力してね");
                 this.inputField.ActivateInputField();
             }
         }
         else
         {
+            // 「エラー」を鳴らす
+            // this.soundManager.GetComponent<SoundManager>().PlayTheSound("エラー");
+
             Debug.Log("入力が無効です");
             this.inputField.ActivateInputField();
         }
@@ -275,6 +294,9 @@ public class GameDirector : MonoBehaviour
             return;
         }
 
+        // 「ミス」を鳴らす
+        this.soundManager.GetComponent<SoundManager>().PlayTheSound("ミス");
+
         // プレイヤーを削除
         Destroy(GameObject.FindGameObjectWithTag("Player"));
 
@@ -320,6 +342,20 @@ public class GameDirector : MonoBehaviour
         this.point = (int)(this.time * 1000);
         // ポイントをスコアに合算
         this.score += this.point;
+
+        // 制限時間に対する残り時間の割合でファンファーレを変える
+        if (this.time / stageSettings[this.stageVariable].timeLimits < 0.3f)
+        {
+            this.soundManager.GetComponent<SoundManager>().PlayTheSound("クリア1");
+        }
+        else if (this.time / stageSettings[this.stageVariable].timeLimits < 0.5f)
+        {
+            this.soundManager.GetComponent<SoundManager>().PlayTheSound("クリア2");
+        }
+        else
+        {
+            this.soundManager.GetComponent<SoundManager>().PlayTheSound("クリア3");
+        }
     }
 
     // ゲームオーバーの処理
@@ -334,10 +370,10 @@ public class GameDirector : MonoBehaviour
     void ResetStatus()
     {
         // 制限時間を更新
-        this.time = this.timeLimits[stageVariable];
+        this.time = stageSettings[stageVariable].timeLimits;
 
         // カメラモードを更新
-        this.mainCamera.GetComponent<CameraController>().cameraMode = this.stageCameraMode[stageVariable];
+        this.mainCamera.GetComponent<CameraController>().cameraMode = stageSettings[stageVariable].stageCameraMode;
 
         // ステージプレイ時の状態をステージプレイ中にリセット
         this.status = "playing";
@@ -346,6 +382,7 @@ public class GameDirector : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(this.mainCamera);
         DontDestroyOnLoad(this.canvas);
+        DontDestroyOnLoad(this.soundManager);
         SceneManager.LoadScene(this.stageVariable);
     }
 }
