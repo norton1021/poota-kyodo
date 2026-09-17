@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         Roll();
 
         // 画面下に落ちるとミス
-        if (transform.position.y < -10)
+        if (transform.position.y < -20)
         {
             GameObject.Find("GameDirectorPrefab").GetComponent<GameDirector>().Miss();
         }
