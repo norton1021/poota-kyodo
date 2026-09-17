@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     Collider2D col2D;
     // Rigidbody2Dの取得
     public Rigidbody2D rigid2D;
+
+    // 着地したかどうか
+    bool landing;
     
     void Start()
     {
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
         this.col2D = GetComponent<Collider2D>();
         this.jumping = false;
         this.rigid2D = GetComponent<Rigidbody2D>();
+        this.landing = true;
     }
 
     void Update()
@@ -59,6 +63,17 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             GameObject.Find("GameDirectorPrefab").GetComponent<GameDirector>().Clear();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
+            if (this.landing)
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayTheSound("接地");
+            }
         }
     }
 
@@ -95,11 +110,22 @@ public class PlayerController : MonoBehaviour
         // 地面と触れたか確認
         if (grounded)
         {
+            if (this.landing)
+            {
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().PlayTheSound("接地");
+            }
+
+            // 接地済とする
+            this.landing = false;
+
             // 地面にいる → ジャンプ可能
             this.jumping = false;
         }
         else
         {
+            // 接地していないとする
+            this.landing = true;
+
             // 空中にいる → ジャンプ不可
             this.jumping = true;
         }
