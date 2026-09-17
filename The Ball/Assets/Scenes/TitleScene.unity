@@ -868,7 +868,7 @@ MonoBehaviour:
     playedTime: 0
   - name: "\u63A5\u5730"
     audioClip: {fileID: 8300000, guid: 94157eeac2e6a8a44a63551fd29f6056, type: 3}
-    playableDistance: 0
+    playableDistance: 0.1
     playedTime: 0
   - name: "\u30DF\u30B9"
     audioClip: {fileID: 8300000, guid: a25267739252e2340a7428c8c18614ea, type: 3}

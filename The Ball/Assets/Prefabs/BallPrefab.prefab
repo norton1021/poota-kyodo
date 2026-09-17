@@ -205,6 +205,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  rigid2D: {fileID: 0}
 --- !u!212 &345434464644116667
 SpriteRenderer:
   serializedVersion: 2
