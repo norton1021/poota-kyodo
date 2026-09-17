@@ -136,8 +136,24 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
+      propertyPath: stageSettings.Array.data[5].timeLimits
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
+      propertyPath: stageSettings.Array.data[6].timeLimits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
       propertyPath: stageSettings.Array.data[4].stageCameraMode
       value: free
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
+      propertyPath: stageSettings.Array.data[5].stageCameraMode
+      value: free
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500152613193794040, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
+      propertyPath: stageSettings.Array.data[6].stageCameraMode
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5919996310970473310, guid: 17751571699a72a4fabe2dd25dd3ba9a, type: 3}
       propertyPath: m_LocalPosition.x
