@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &520306999219548818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2883262442775944517}
+  - component: {fileID: 2025078197051343127}
+  m_Layer: 0
+  m_Name: SoundManagerPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2883262442775944517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520306999219548818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2025078197051343127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520306999219548818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a164abd387522141be7e970b7f65d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  soundDatas:
+  - name: "\u6C7A\u5B9A"
+    audioClip: {fileID: 8300000, guid: 17f1e5a4d05e12f41b8f2e685cfbb15d, type: 3}
+    volume: 1
+    playableDistance: 0
+    playedTime: 0
+  - name: "\u30A8\u30E9\u30FC"
+    audioClip: {fileID: 8300000, guid: 0931c75a10e0c03458dc7d714c561f87, type: 3}
+    volume: 0.5
+    playableDistance: 0
+    playedTime: 0
+  - name: "\u63A5\u5730"
+    audioClip: {fileID: 8300000, guid: 94157eeac2e6a8a44a63551fd29f6056, type: 3}
+    volume: 1
+    playableDistance: 0.1
+    playedTime: 0
+  - name: "\u30DF\u30B9"
+    audioClip: {fileID: 8300000, guid: a25267739252e2340a7428c8c18614ea, type: 3}
+    volume: 1
+    playableDistance: 0
+    playedTime: 0
+  - name: "\u30AF\u30EA\u30A21"
+    audioClip: {fileID: 8300000, guid: 6dd30962ab42d414cbb9b2baeec8597f, type: 3}
+    volume: 1
+    playableDistance: 0
+    playedTime: 0
+  - name: "\u30AF\u30EA\u30A22"
+    audioClip: {fileID: 8300000, guid: b7c4983d7580e67458716a3e849e9721, type: 3}
+    volume: 1
+    playableDistance: 0
+    playedTime: 0
+  - name: "\u30AF\u30EA\u30A23"
+    audioClip: {fileID: 8300000, guid: 72c99e625e5415048b5849bcf187a1c5, type: 3}
+    volume: 1
+    playableDistance: 0
+    playedTime: 0
+  bgmDatas:
+  - name: StageBGM1
+    bgmClip: {fileID: 8300000, guid: a55298c2f53449f44806b9d8f630c31a, type: 3}
+    volume: 0
+  - name: StageBGM2
+    bgmClip: {fileID: 8300000, guid: 77ed4618b29d6dc489fda8c182120d02, type: 3}
+    volume: 0
+  - name: StageBGM3
+    bgmClip: {fileID: 8300000, guid: 5b8a995a92a9c5d44914b4dd4c0df455, type: 3}
+    volume: 0
+  - name: StageBGM4
+    bgmClip: {fileID: 8300000, guid: 7aad6091c08a25d418f505059c2efe65, type: 3}
+    volume: 0
+  - name: StageBGM5
+    bgmClip: {fileID: 8300000, guid: c27e5d3572931664297c5bb5aa3c54e3, type: 3}
+    volume: 0
+  FadeOutSeconds: 1
