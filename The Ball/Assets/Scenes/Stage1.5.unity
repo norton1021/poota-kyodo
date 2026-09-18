@@ -194,7 +194,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.interval
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -263,7 +263,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.interval
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
