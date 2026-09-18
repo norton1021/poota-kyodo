@@ -30,12 +30,12 @@ public class EnemyGenerator : MonoBehaviour
         }
         else if (move == MOVE_TYPE.RIGHT)
         {
-            scale.x = 1;
+            scale.x = (float)0.3;
             speed = 3;
         }
         else if (move == MOVE_TYPE.LEFT)
         {
-            scale.x = -1;
+            scale.x = (float)-0.3;
             speed = -3;
         }
         transform.localScale = scale;
