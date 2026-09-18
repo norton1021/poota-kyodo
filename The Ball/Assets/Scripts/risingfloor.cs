@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class RisingPlatform : MonoBehaviour
 {
-    public float riseSpeed = 3f;
-    public float riseDistance = 5f;
+    public float speed = 3f;          // ˆÚ“®‘¬“x
+    public float distance = 5f;       // ã‰º‚ÉˆÚ“®‚·‚é‹——£
 
     private Vector3 startPosition;
-    private bool rising = false;
+    private bool goingUp = true;
 
     void Start()
     {
@@ -15,29 +15,35 @@ public class RisingPlatform : MonoBehaviour
 
     void Update()
     {
-        if (rising)
+        if (goingUp)
         {
-            transform.position += Vector3.up * riseSpeed * Time.deltaTime;
+            // ã‚ÉˆÚ“®
+            transform.position += Vector3.up * speed * Time.deltaTime;
 
-            // Žw’è‚µ‚½‹——£‚Ü‚Åã‚ª‚Á‚½‚ç’âŽ~
-            if (transform.position.y >= startPosition.y + riseDistance)
+            // ˆê”Ôã‚É“ž’…
+            if (transform.position.y >= startPosition.y + distance)
             {
                 transform.position = new Vector3(
-                    transform.position.x,
-                    startPosition.y + riseDistance,
-                    transform.position.z
+                    startPosition.x,
+                    startPosition.y + distance,
+                    startPosition.z
                 );
 
-                rising = false;
+                goingUp = false;
             }
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        else
         {
-            rising = true;
+            // ‰º‚ÉˆÚ“®
+            transform.position += Vector3.down * speed * Time.deltaTime;
+
+            // ˆê”Ô‰º‚É“ž’…
+            if (transform.position.y <= startPosition.y)
+            {
+                transform.position = startPosition;
+
+                goingUp = true;
+            }
         }
     }
 }
