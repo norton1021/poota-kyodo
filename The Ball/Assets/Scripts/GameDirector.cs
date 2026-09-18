@@ -41,6 +41,13 @@ public class GameDirector : MonoBehaviour
     int point = 0;
     // スコア
     int score = 0;
+    // 次にライフを増やすスコアの閾値
+    int nextLifeScoreThreshold = 0;
+    // 増加したライフの数
+    int increasedLives = 0;
+    // ライフが増加したことを伝える
+    bool lifeIncreased = false;
+
     // ステージ番号で管理するための変数（0はタイトル画面）
     int stageVariable = 0;
     // タイマー
@@ -62,6 +69,9 @@ public class GameDirector : MonoBehaviour
         this.soundManager = GameObject.Find("SoundManagerPrefab");
         this.point = 0;
         this.score = 0;
+        this.nextLifeScoreThreshold = 40000;
+        this.increasedLives = 0;
+        this.lifeIncreased = false;
         this.stageVariable = 0;
         this.time = 0;
         this.mainCamera.GetComponent<CameraController>().cameraMode = stageSettings[stageVariable].stageCameraMode;
@@ -160,6 +170,10 @@ public class GameDirector : MonoBehaviour
             {
                 // ステージ番号を1増加
                 this.stageVariable += 1;
+
+                // ライフの情報をリセット
+                this.increasedLives = 0;
+                this.lifeIncreased = false;
 
                 // 最後のステージに到達したらタイトルシーンへ
                 if (this.stageVariable > this.scenes - 1)
@@ -278,9 +292,18 @@ public class GameDirector : MonoBehaviour
         // スコアとプレイヤーの残機を表示
         if (this.status == "clear")
         {
-            this.gameInformation.GetComponent<TextMeshProUGUI>().text =
-                "Score: " + this.score + "  +" + this.point + "pts!\n" +
-                "Life Count: " + this.playerLives;
+            if (this.lifeIncreased)
+            {
+                this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+                    "Score: " + this.score + "  +" + this.point + "pts!\n" +
+                    "Life Count: " + this.playerLives + "  +" + this.increasedLives;
+            }
+            else
+            {
+                this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+                    "Score: " + this.score + "  +" + this.point + "pts!\n" +
+                    "Life Count: " + this.playerLives;
+            }
         }
         else
         {
@@ -348,6 +371,19 @@ public class GameDirector : MonoBehaviour
         // ポイントをスコアに合算
         this.score += this.point;
 
+        // 40000ptsごとにライフを増やす
+        while (this.score >= this.nextLifeScoreThreshold)
+        {
+            this.increasedLives++;
+            this.nextLifeScoreThreshold += 40000;
+        }
+
+        if (this.increasedLives >= 1)
+        {
+            this.playerLives += this.increasedLives;
+            this.lifeIncreased = true;
+        }
+
         // 制限時間に対する残り時間の割合でファンファーレを変える
         if (this.time / stageSettings[this.stageVariable].timeLimits < 0.2f)
         {
@@ -374,18 +410,21 @@ public class GameDirector : MonoBehaviour
     // シーン遷移時の各項目のリセット
     void ResetStatus()
     {
-        // 制限時間を更新
-        this.time = stageSettings[stageVariable].timeLimits;
-
-        // カメラモードを更新
-        this.mainCamera.GetComponent<CameraController>().cameraMode = stageSettings[stageVariable].stageCameraMode;
-        this.mainCamera.GetComponent<CameraController>().cameraOffset = stageSettings[stageVariable].stageCameraOffset;
-
-        // ステージプレイ時の状態をステージプレイ中にリセット
-        this.status = "playing";
+        // 時間やカメラが未設定ならタイトルシーンへ
+        if (stageSettings[stageVariable].timeLimits <= 0 ||
+            stageSettings[stageVariable].stageCameraMode == null)
+        {
+            // タイトルシーンへ
+            this.stageVariable = 0;
+            this.soundManager.GetComponent<SoundManager>().PlayTheBGM("stop");
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(this.canvas, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(this.mainCamera, SceneManager.GetActiveScene());
+            SceneManager.LoadScene("TitleScene");
+        }
 
         // ステージに応じてBGMを再生
-        switch ((stageVariable - 1) / 2)
+        switch ((stageVariable - 1) / 4)
         {
             case 0:
                 this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM1");
@@ -413,5 +452,15 @@ public class GameDirector : MonoBehaviour
         DontDestroyOnLoad(this.canvas);
         DontDestroyOnLoad(this.soundManager);
         SceneManager.LoadScene(this.stageVariable);
+
+        // カメラモードを更新
+        this.mainCamera.GetComponent<CameraController>().cameraMode = stageSettings[stageVariable].stageCameraMode;
+        this.mainCamera.GetComponent<CameraController>().cameraOffset = stageSettings[stageVariable].stageCameraOffset;
+
+        // ステージプレイ時の状態をステージプレイ中にリセット
+        this.status = "playing";
+
+        // 制限時間を更新
+        this.time = stageSettings[stageVariable].timeLimits;
     }
 }

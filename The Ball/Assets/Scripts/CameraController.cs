@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
         // カメラを固定
         if (this.cameraMode == "fixed")
         {
-            transform.position = this.prePlayerPos + this.cameraOffset;
+            transform.position = new Vector3(0, 0, -10) + this.cameraOffset;
         }
         // 横移動でプレイヤーに追従
         else if (this.cameraMode == "horizontal")
