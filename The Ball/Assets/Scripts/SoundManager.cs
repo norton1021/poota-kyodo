@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -22,6 +21,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField, Header("Volumeは0.0～1.0の範囲で指定してね\nPlayed Timeは編集しないでください")]
     SoundData[] soundDatas;
 
+    // AudioSource（スピーカー）を同時に鳴らしたい音の数だけ用意
+    AudioSource[] audioSourceList = new AudioSource[10];
+
+    // 別名(name)をキーとしたSoundの管理用Dictionary
+    Dictionary<string, SoundData> soundDictionary = new Dictionary<string, SoundData>();
+
     [System.Serializable]
     public class BgmData
     {
@@ -36,20 +41,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField, Header("Volumeは0.0～1.0の範囲で指定してね")]
     BgmData[] bgmDatas;
 
-    // AudioSource（スピーカー）を同時に鳴らしたい音の数だけ用意
-    AudioSource[] audioSourceList = new AudioSource[10];
-
     // BGM専用のスピーカーを1つだけ用意
     AudioSource bgmSource;
 
-    // 別名(name)をキーとしたSoundの管理用Dictionary
-    Dictionary<string, SoundData> soundDictionary = new Dictionary<string, SoundData>();
-
     // 別名(name)をキーとしたBGMの管理用Dictionary
     Dictionary<string, BgmData> bgmDictionary = new Dictionary<string, BgmData>();
-
-    [Header("フェードアウトにかける時間")]
-    public float FadeOutSeconds = 1.0f;
 
     void Start()
     {
@@ -61,6 +57,8 @@ public class SoundManager : MonoBehaviour
 
         // ループ再生できるBGM専用のAudioSourceを用意
         this.bgmSource = gameObject.AddComponent<AudioSource>();
+        this.bgmSource.loop = true;
+
         // soundDictionaryにセット
         foreach (SoundData soundData in soundDatas)
         {
@@ -71,23 +69,6 @@ public class SoundManager : MonoBehaviour
         foreach (BgmData bgmData in bgmDatas)
         {
             bgmDictionary.Add(bgmData.name, bgmData);
-        }
-    }
-
-
-    // 現在再生中のBGMの最大音量
-    float maxVolume;
-    // フェードアウト中の音量管理用変数
-    float FadeDeltaTime;
-    // フェードアウトするか、またはフェードアウト中かどうか
-    bool IsFadeOut;
-
-    // フェードアウト用
-    void Update()
-    {
-        if (IsFadeOut)
-        {
-            FadeOut();
         }
     }
 
@@ -127,13 +108,6 @@ public class SoundManager : MonoBehaviour
         // nameに「stop」と送られたら現在再生中のBGMをフェードアウトさせる
         if (name == "stop")
         {
-            /*// 現在再生中のBGMの最大音量
-            this.maxVolume = this.bgmSource.volume;
-            // フェードアウト中の音量管理用変数
-            this.FadeDeltaTime = 0;
-            // フェードアウトさせる
-            this.IsFadeOut = true;*/
-
             this.bgmSource.Stop();
             return;
         }
@@ -159,13 +133,6 @@ public class SoundManager : MonoBehaviour
                 // 現在再生中のBGMと違うなら
                 else
                 {
-                    /*// 現在再生中のBGMの最大音量を取得
-                    this.maxVolume = this.bgmSource.volume;
-                    // フェードアウトの時間を初期化
-                    this.FadeDeltaTime = 0;
-                    // フェードアウトさせる
-                    this.IsFadeOut = true;*/
-
                     // BGMを流す
                     this.bgmSource.clip = bgmData.bgmClip;
                     this.bgmSource.volume = bgmData.volume;
@@ -202,23 +169,6 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.Play();
-    }
-
-    // フェードアウト
-    void FadeOut()
-    {
-        // 現在再生中のBGMをフェードアウトさせる
-        if (IsFadeOut)
-        {
-            FadeDeltaTime += Time.deltaTime;
-            if (FadeDeltaTime >= FadeOutSeconds)
-            {
-                FadeDeltaTime = FadeOutSeconds;
-                IsFadeOut = false;
-                this.bgmSource.volume = 0;
-            }
-            this.bgmSource.volume = maxVolume * (float)(1.0 - FadeDeltaTime / FadeOutSeconds);
-        }
     }
 
     // 未使用のAudioSourceの取得。全て使用中の場合はnullを返却

@@ -83,6 +83,21 @@ MonoBehaviour:
   bgmDatas:
   - name: StageBGM1
     bgmClip: {fileID: 8300000, guid: a55298c2f53449f44806b9d8f630c31a, type: 3}
+<<<<<<< HEAD
+    volume: 0.2
+  - name: StageBGM2
+    bgmClip: {fileID: 8300000, guid: 77ed4618b29d6dc489fda8c182120d02, type: 3}
+    volume: 0.2
+  - name: StageBGM3
+    bgmClip: {fileID: 8300000, guid: 5b8a995a92a9c5d44914b4dd4c0df455, type: 3}
+    volume: 0.2
+  - name: StageBGM4
+    bgmClip: {fileID: 8300000, guid: 7aad6091c08a25d418f505059c2efe65, type: 3}
+    volume: 0.2
+  - name: StageBGM5
+    bgmClip: {fileID: 8300000, guid: c27e5d3572931664297c5bb5aa3c54e3, type: 3}
+    volume: 0.2
+=======
     volume: 0
   - name: StageBGM2
     bgmClip: {fileID: 8300000, guid: 77ed4618b29d6dc489fda8c182120d02, type: 3}
@@ -97,3 +112,4 @@ MonoBehaviour:
     bgmClip: {fileID: 8300000, guid: c27e5d3572931664297c5bb5aa3c54e3, type: 3}
     volume: 0
   FadeOutSeconds: 1
+>>>>>>> 96b68aa7f3b6f4d8376bb5c6bdee2041c1625673
