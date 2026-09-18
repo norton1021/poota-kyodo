@@ -11,8 +11,8 @@ public class BulletController : MonoBehaviour
         transform.Translate(-this.bulletVerocity, 0, 0);
 
         // 画面外に出たらオブジェクトを破棄する
-        if (transform.position.x < -50 ||
-            transform.position.x > 50 ||
+        if (transform.position.x < -100 ||
+            transform.position.x > 100 ||
             transform.position.y < -50 ||
             transform.position.y > 50)
         {
