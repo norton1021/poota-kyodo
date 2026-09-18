@@ -41,4 +41,30 @@ public class EnemyGenerator : MonoBehaviour
         transform.localScale = scale;
         rbody2D.linearVelocity = new Vector2(speed, rbody2D.linearVelocity.y);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+
+    {
+
+        // StageLayerÇ…ê›íËÇµÇΩï«Ç»Ç«Ç…ìñÇΩÇ¡ÇΩÇÁîΩì]
+
+        if (((1 << collision.gameObject.layer) & StageLayer) != 0)
+
+        {
+
+            if (move == MOVE_TYPE.LEFT)
+
+            {
+
+                move = MOVE_TYPE.RIGHT;
+
+            }
+
+            else if (move == MOVE_TYPE.RIGHT)
+
+            {
+
+                move = MOVE_TYPE.LEFT;
+            }
+        }
+    }
 }
