@@ -152,6 +152,19 @@ public class GameDirector : MonoBehaviour
     // ゲームの状態ごとのシーンの遷移方法
     void SceneTransition()
     {
+        // （デバッグ用）リセット用コマンド
+        if (this.mode == "game" &&
+            (Keyboard.current != null &&
+            Keyboard.current.qKey.wasPressedThisFrame))
+        {
+            this.stageVariable = 0;
+            this.soundManager.GetComponent<SoundManager>().PlayTheBGM("stop");
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(this.canvas, SceneManager.GetActiveScene());
+            SceneManager.MoveGameObjectToScene(this.mainCamera, SceneManager.GetActiveScene());
+            SceneManager.LoadScene("TitleScene");
+        }
+
         // ミスまたは時間切れのとき
         if (this.status == "miss" ||
             this.status == "timesup")
