@@ -69,7 +69,7 @@ public class GameDirector : MonoBehaviour
         this.soundManager = GameObject.Find("SoundManagerPrefab");
         this.point = 0;
         this.score = 0;
-        this.nextLifeScoreThreshold = 40000;
+        this.nextLifeScoreThreshold = 30000;
         this.increasedLives = 0;
         this.lifeIncreased = false;
         this.stageVariable = 0;
@@ -384,11 +384,11 @@ public class GameDirector : MonoBehaviour
         // ポイントをスコアに合算
         this.score += this.point;
 
-        // 40000ptsごとにライフを増やす
+        // 30000ptsごとにライフを増やす
         while (this.score >= this.nextLifeScoreThreshold)
         {
             this.increasedLives++;
-            this.nextLifeScoreThreshold += 40000;
+            this.nextLifeScoreThreshold += 30000;
         }
 
         if (this.increasedLives >= 1)

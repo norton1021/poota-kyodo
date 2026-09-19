@@ -59,6 +59,9 @@ MonoBehaviour:
     stageCameraMode: horizontal
     stageCameraOffset: {x: 0, y: 0, z: 0}
   - timeLimits: 15
+    stageCameraMode: fixed
+    stageCameraOffset: {x: 0, y: 0, z: 0}
+  - timeLimits: 15
     stageCameraMode: horizontal
     stageCameraOffset: {x: 0, y: 0, z: 0}
   - timeLimits: 20
@@ -75,9 +78,6 @@ MonoBehaviour:
     stageCameraOffset: {x: 0, y: 0, z: 0}
   - timeLimits: 60
     stageCameraMode: free
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - timeLimits: 0
-    stageCameraMode: 
     stageCameraOffset: {x: 0, y: 0, z: 0}
   - timeLimits: 0
     stageCameraMode: 
