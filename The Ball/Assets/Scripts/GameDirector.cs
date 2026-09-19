@@ -16,10 +16,9 @@ public class GameDirector : MonoBehaviour
     [System.Serializable]
     public class StageSettings
     {
+        public string sceneName;
         public float timeLimits;
-
         public string stageCameraMode;
-
         public Vector3 stageCameraOffset;
     }
 
