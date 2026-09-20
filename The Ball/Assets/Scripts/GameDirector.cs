@@ -433,6 +433,7 @@ public class GameDirector : MonoBehaviour
             SceneManager.MoveGameObjectToScene(this.canvas, SceneManager.GetActiveScene());
             SceneManager.MoveGameObjectToScene(this.mainCamera, SceneManager.GetActiveScene());
             SceneManager.LoadScene("TitleScene");
+            return;
         }
 
         // ステージに応じてBGMを再生

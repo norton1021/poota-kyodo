@@ -7,6 +7,8 @@ public class CannonController : MonoBehaviour
     {
         [Header("弾")]
         public GameObject bulletPrefab;
+        [Header("最初の弾を撃つまでの時間")]
+        public float initialInterbal;
         [Header("発射間隔")]
         public float interval;
         [Header("弾速")]
@@ -17,6 +19,11 @@ public class CannonController : MonoBehaviour
     CannonData cannonData;
 
     float delta = 0;
+
+    void Start()
+    {
+        this.delta = this.cannonData.initialInterbal;
+    }
 
     void Update()
     {
