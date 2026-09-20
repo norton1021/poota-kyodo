@@ -332,7 +332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.initialInterbal
-      value: 0.625
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -409,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.initialInterbal
-      value: 0.5
+      value: 1.125
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -551,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.initialInterbal
-      value: 0.875
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -1006,7 +1006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.bulletVelocity
-      value: 0.15
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -1644,7 +1644,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.interval
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.bulletVelocity
@@ -1778,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.bulletVelocity
-      value: 0.15
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -1855,7 +1855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.initialInterbal
-      value: 0.75
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalScale.x
@@ -2043,7 +2043,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.interval
-      value: 1.5
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2871277724658427714, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: m_LocalPosition.x
