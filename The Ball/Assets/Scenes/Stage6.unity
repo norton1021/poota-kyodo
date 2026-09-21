@@ -707,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 528352335429519986, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalScale.x
@@ -1435,15 +1435,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1712,15 +1712,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2025,7 +2025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 528352335429519986, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: jumpPower
-      value: 50
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 584763457121339463, guid: 06e047e51c7e83243b76b461e73c3fe2, type: 3}
       propertyPath: m_LocalScale.x
@@ -3230,11 +3230,9 @@ SceneRoots:
   - {fileID: 1289003226}
   - {fileID: 1864535994}
   - {fileID: 2139626734}
-  - {fileID: 962007821}
   - {fileID: 228557153}
   - {fileID: 1889730911}
   - {fileID: 1437246097}
-  - {fileID: 1065831196}
   - {fileID: 1812712399}
   - {fileID: 1392032594}
   - {fileID: 1544769880}
@@ -3255,6 +3253,8 @@ SceneRoots:
   - {fileID: 1054182508}
   - {fileID: 252452462}
   - {fileID: 2125987353}
+  - {fileID: 962007821}
+  - {fileID: 1065831196}
   - {fileID: 34412868}
   - {fileID: 1908049904}
   - {fileID: 768590352}
