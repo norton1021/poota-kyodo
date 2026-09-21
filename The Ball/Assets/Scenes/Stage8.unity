@@ -259,7 +259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.interval
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.bulletVelocity
@@ -657,7 +657,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.interval
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2694016800138074648, guid: 774fc717cd0bc6c4ba95074392e38d70, type: 3}
       propertyPath: cannonData.bulletVelocity
