@@ -99,34 +99,14 @@ MonoBehaviour:
     stageCameraMode: vertical
     stageCameraOffset: {x: 0, y: 2, z: 0}
   - sceneName: Stage13
+    timeLimits: 75
+    stageCameraMode: horizontal
+    stageCameraOffset: {x: 0, y: -2.5, z: 0}
+  - sceneName: Stage14
     timeLimits: 60
     stageCameraMode: free
     stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: Stage14
+  - sceneName: Stage15
     timeLimits: 50
     stageCameraMode: free
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: 
-    timeLimits: 0
-    stageCameraMode: 
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: 
-    timeLimits: 0
-    stageCameraMode: 
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: 
-    timeLimits: 0
-    stageCameraMode: 
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: 
-    timeLimits: 0
-    stageCameraMode: 
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: 
-    timeLimits: 0
-    stageCameraMode: 
-    stageCameraOffset: {x: 0, y: 0, z: 0}
-  - sceneName: 
-    timeLimits: 0
-    stageCameraMode: 
     stageCameraOffset: {x: 0, y: 0, z: 0}
