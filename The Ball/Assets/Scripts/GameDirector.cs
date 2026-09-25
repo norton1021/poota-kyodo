@@ -481,7 +481,7 @@ public class GameDirector : MonoBehaviour
         }
 
         // ステージに応じてBGMを再生
-        switch ((stageVariable - 1) / 4)
+        switch ((stageVariable - 1) / 3)
         {
             case 0:
                 this.soundManager.GetComponent<SoundManager>().PlayTheBGM("StageBGM1");
