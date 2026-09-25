@@ -85,19 +85,19 @@ public class GameDirector : MonoBehaviour
     void Update()
     {
         // メニュー時
-        if (this.mode == "menu")
-        {
-            this.gameInformation.GetComponent<TextMeshProUGUI>().text =
-                "The Ball";
-            this.stageInformation.GetComponent<TextMeshProUGUI>().text =
-                "Enter numbers from 1 to " + (this.scenes - 1);
+       // if (this.mode == "menu")
+       // {
+            //this.gameInformation.GetComponent<TextMeshProUGUI>().text =
+              //  "The Ball";
+            //this.stageInformation.GetComponent<TextMeshProUGUI>().text =
+              //  "Enter numbers from 1 to " + (this.scenes - 1);
 
             // （デバッグ用）inputFieldを選択状態にする
             if (this.inputField != null)
             {
                 this.inputField.Select();
             }
-        }
+      //  }
         // ゲームプレイ時
         else if (this.mode == "game")
         {
