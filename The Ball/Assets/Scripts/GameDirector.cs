@@ -31,10 +31,16 @@ public class GameDirector : MonoBehaviour
     GameObject gameInformation;
     // ステージ情報UIのオブジェクト
     GameObject stageInformation;
+    // ステージ情報UIのオブジェクト
+    GameObject BackgroundColer;
+    // ステージ情報UIのオブジェクト
+    GameObject BackgroundColer1;
     // カメラのオブジェクト
     GameObject mainCamera;
     // サウンドマネージャーのオブジェクト
     GameObject soundManager;
+    // タイトル画面
+    GameObject title;
 
     // クリア時の獲得ポイント
     int point = 0;
@@ -62,10 +68,13 @@ public class GameDirector : MonoBehaviour
         this.mode = "menu";
         this.status = "playing";
         this.canvas = GameObject.Find("CanvasPrefab");
+        this.BackgroundColer = GameObject.Find("BackgroundColor");
+        this.BackgroundColer1 = GameObject.Find("BackgroundColor (1)");
         this.gameInformation = GameObject.Find("GameInformation");
         this.stageInformation = GameObject.Find("StageInformation");
         this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.soundManager = GameObject.Find("SoundManagerPrefab");
+        this.title = GameObject.Find("Title");
         this.point = 0;
         this.score = 0;
         this.nextLifeScoreThreshold = 30000;
@@ -85,22 +94,57 @@ public class GameDirector : MonoBehaviour
     void Update()
     {
         // メニュー時
-       // if (this.mode == "menu")
-       // {
-            //this.gameInformation.GetComponent<TextMeshProUGUI>().text =
-              //  "The Ball";
-            //this.stageInformation.GetComponent<TextMeshProUGUI>().text =
-              //  "Enter numbers from 1 to " + (this.scenes - 1);
+        if (this.mode == "menu")
+        {
+            // UIを非表示
+            if (this.BackgroundColer != null)
+            {
+                this.BackgroundColer.gameObject.SetActive(false);
+            }
+            if (this.BackgroundColer1 != null)
+            {
+                this.BackgroundColer1.gameObject.SetActive(false);
+            }
+            if (this.stageInformation != null)
+            {
+                this.stageInformation.gameObject.SetActive(false);
+            }
+            if (this.gameInformation != null)
+            {
+                this.gameInformation.gameObject.SetActive(false);
+            }
 
             // （デバッグ用）inputFieldを選択状態にする
             if (this.inputField != null)
             {
                 this.inputField.Select();
             }
-      //  }
+        }
         // ゲームプレイ時
         else if (this.mode == "game")
         {
+            // UIを表示
+            if (this.BackgroundColer != null)
+            {
+                this.BackgroundColer.gameObject.SetActive(true);
+            }
+            if (this.BackgroundColer1 != null)
+            {
+                this.BackgroundColer1.gameObject.SetActive(true);
+            }
+            if (this.stageInformation != null)
+            {
+                this.stageInformation.gameObject.SetActive(true);
+            }
+            if (this.gameInformation != null)
+            {
+                this.gameInformation.gameObject.SetActive(true);
+            }
+            if (this.title != null)
+            {
+                this.title.SetActive(false);
+            }
+
             SceneTransition();
 
             Timer();
